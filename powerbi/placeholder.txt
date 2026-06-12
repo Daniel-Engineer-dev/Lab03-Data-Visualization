@@ -1,0 +1,4 @@
+Đặt các file Power BI (.pbix) của nhóm vào đây.
+Định dạng đặt tên:
+- [MSSV1_MSSV2_MSSV3]_samples.pbix
+- [MSSV1_MSSV2_MSSV3].pbix

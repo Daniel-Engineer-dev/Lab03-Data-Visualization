@@ -1,0 +1,2 @@
+Đặt video thuyết trình giới thiệu dashboard hoặc kịch bản quay video thuyết trình vào đây.
+Định dạng file video chuẩn: mp4 hoặc liên kết drive trong file txt.

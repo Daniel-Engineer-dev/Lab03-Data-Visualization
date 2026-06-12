@@ -1,0 +1,58 @@
+# ==========================================
+# GITIGNORE CHO DỰ ÁN LAB 03 (POWER BI & LATEX)
+# ==========================================
+
+# --- LaTeX Temporary Files (Các file tạm sinh ra khi biên dịch) ---
+report/build/
+report/*.aux
+report/*.log
+report/*.toc
+report/*.lof
+report/*.lot
+report/*.out
+report/*.synctex.gz
+report/*.fls
+report/*.fdb_latexmk
+report/*.xdv
+report/*.bbl
+report/*.blg
+report/*.run.xml
+report/*.bcf
+report/*.pdf.bak
+
+# Không bỏ qua file báo cáo PDF kết quả chính để dễ chia sẻ,
+# nhưng nếu bạn muốn tự biên dịch mà không muốn đưa PDF lên Git, hãy bỏ comment dòng dưới:
+# report/main.pdf
+
+# --- Dữ liệu thô & Kích thước lớn (Raw data files) ---
+# Tránh đẩy các file dữ liệu quá nặng lên Git (Git giới hạn kích thước file)
+data/raw/*.csv
+data/raw/*.xlsx
+data/raw/*.xls
+data/raw/*.zip
+data/raw/*.json
+# Giữ lại file placeholder để không bị mất thư mục trống trên Git
+!data/raw/placeholder.txt
+
+# --- Power BI Temporary & Auto-recovery files ---
+powerbi/*.tmp
+powerbi/*.temp
+# Giữ lại file placeholder
+!powerbi/placeholder.txt
+
+# --- Video & Trình bày ---
+# Tránh đẩy file video mp4/avi dung lượng lớn lên Git trực tiếp
+video/*.mp4
+video/*.avi
+video/*.mov
+!video/placeholder.txt
+
+# --- Hệ điều hành & Thư mục rác (OS specific) ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- VS Code (Chỉ bỏ qua các tệp lịch sử hoặc cá nhân, giữ lại settings.json cho LaTeX-Workshop) ---
+.vscode/.history/
+.vscode/*.log
+.vscode/sftp.json

@@ -1,0 +1,143 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- KHAI BÁO CÁC GÓI CẦN THIẾT ---
+\usepackage{iftex}
+\ifXeTeX
+  \usepackage{fontspec}
+  \setmainfont{Times New Roman}
+\else
+  \usepackage[utf8]{inputenc}
+\fi
+\usepackage[vietnamese]{babel} % Hỗ trợ tiếng Việt
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=30mm,
+    right=20mm,
+    top=25mm,
+    bottom=25mm
+}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{microtype}
+
+% --- ĐỊNH NGHĨA MÀU SẮC ---
+\definecolor{navyblue}{HTML}{002060} % Màu xanh navy chủ đạo của bìa
+\definecolor{darkgray}{HTML}{333333}
+
+% --- THIẾT LẬP HYPERREF ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navyblue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Báo cáo Lab 03: Trực quan hóa dữ liệu bằng Power BI},
+    pdfpagemode=FullScreen,
+}
+
+% --- THIẾT LẬP HEADER VÀ FOOTER ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{9}{11}\selectfont\color{darkgray}\CourseName}
+\fancyhead[R]{\fontsize{9}{11}\selectfont\color{darkgray}Lab 03: Trực quan hóa dữ liệu bằng Power BI}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- CẤU HÌNH TIÊU ĐỀ CHƯƠNG/MỤC ---
+\titleformat{\section}
+  {\color{navyblue}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\color{navyblue}\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- THÔNG TIN DỰ ÁN (CẤU HÌNH CHO TRANG BÌA) ---
+\newcommand{\UniversityName}{Đại học Quốc gia Thành phố Hồ Chí Minh}
+\newcommand{\SchoolName}{Trường Đại học Khoa học Tự nhiên}
+\newcommand{\FacultyName}{Khoa Công nghệ Thông tin}
+\newcommand{\CourseName}{Trực quan hóa dữ liệu}
+\newcommand{\ReportType}{BÁO CÁO BÀI TẬP THỰC HÀNH}
+\newcommand{\ProjectTitle}{TRỰC QUAN HÓA VÀ PHÂN TÍCH DỮ LIỆU VỚI POWER BI: [TÊN ĐỀ TÀI CỦA NHÓM]}
+\newcommand{\TeamName}{Nhóm XX}
+\newcommand{\TeamMembers}{
+    \begin{tabular}{lll}
+    Thành viên A & - \quad MSSV\_A & - \quad Trưởng nhóm \\
+    Thành viên B & - \quad MSSV\_B & - \quad Thành viên \\
+    Thành viên C & - \quad MSSV\_C & - \quad Thành viên \\
+    Thành viên D & - \quad MSSV\_D & - \quad Thành viên
+    \end{tabular}
+}
+\newcommand{\InstructorName}{Thầy/Cô Giảng viên phụ trách}
+\newcommand{\ReportDate}{Tháng 06/2026}
+
+% --- KHỞI ĐẦU TÀI LIỆU ---
+\begin{document}
+
+% 1. Trang bìa
+\input{coverpage.tex}
+\newpage
+
+% 2. Trang thông tin đóng góp của nhóm
+\pagenumbering{roman}
+\section*{Thông tin đóng góp của các thành viên}
+\addcontentsline{toc}{section}{Thông tin đóng góp của các thành viên}
+
+Dưới đây là bảng tự đánh giá mức độ hoàn thành công việc và tỷ lệ đóng góp của các thành viên trong nhóm đối với đồ án Lab 03:
+
+\vspace{0.5cm}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|c|l|c|}
+\hline
+\textbf{STT} & \textbf{Họ và Tên} & \textbf{MSSV} & \textbf{Nhiệm vụ phụ trách} & \textbf{Mức độ đóng góp} \\ \hline
+1 & Thành viên A & MSSV\_A & Trưởng nhóm, thiết kế Data Model, Dashboard & 25\% \\ \hline
+2 & Thành viên B & MSSV\_B & Chuẩn bị dữ liệu, phân tích Mục tiêu 2 & 25\% \\ \hline
+3 & Thành viên C & MSSV\_C & Tạo tương tác Dashboard, phân tích Mục tiêu 3 & 25\% \\ \hline
+4 & Thành viên D & MSSV\_D & Thiết kế LaTeX, dựng video, phân tích Mục tiêu 4 & 25\% \\ \hline
+\end{tabular}
+\caption{Bảng phân chia công việc và đóng góp thành viên}
+\label{tab:donggop}
+\end{table}
+
+\newpage
+
+% 3. Mục lục
+\tableofcontents
+\newpage
+\listoftables
+\newpage
+\listoffigures
+\newpage
+
+% Đổi sang đánh số trang Ả-rập cho nội dung chính
+\pagenumbering{arabic}
+
+% 4. Các phần nội dung chính
+\input{sections/sec1_intro_pbi.tex}
+\newpage
+
+\input{sections/sec2_data_model.tex}
+\newpage
+
+\input{sections/sec3_analysis_goals.tex}
+\newpage
+
+\input{sections/sec4_visualization.tex}
+\newpage
+
+\input{sections/sec5_concl_ref.tex}
+
+\end{document}
