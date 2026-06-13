@@ -1,36 +1,40 @@
 \section{Xác định Mục tiêu Phân tích}
 \label{sec:analysis_goals}
 
-Để đảm bảo quá trình trực quan hóa dữ liệu mang lại giá trị thực tiễn cao, nhóm đã thiết lập một mục tiêu phân tích chung và phân rã thành bốn mục tiêu chi tiết tương ứng với vai trò của bốn thành viên.
+Để báo cáo không bị dàn trải, nhóm giới hạn phạm vi phân tích vào các vụ va chạm giao thông đường bộ tại Great Britain trong giai đoạn \textbf{2020--2024}. Trọng tâm của dashboard là nhận diện các yếu tố thường đi kèm với mức độ nghiêm trọng của tai nạn, thay vì cố gắng phân tích toàn bộ mọi trường dữ liệu trong bộ STATS19.
 
-\subsection{Mục tiêu phân tích chung của nhóm}
-\textit{[Hướng dẫn điền: Nhóm phát biểu mục tiêu chung của đề tài phân tích dữ liệu đã chọn. Ví dụ: Đánh giá hiệu suất hoạt động, tìm hiểu hành vi người tiêu dùng, tối ưu hóa quy trình quản trị, dự báo xu hướng... Nêu rõ câu hỏi lớn nhất mà hệ thống Dashboard này cần trả lời].}
+\subsection{Bài toán phân tích chung của nhóm}
+
+\textbf{Bài toán chung}: Trong giai đoạn 2020--2024, tai nạn giao thông đường bộ tại Great Britain thay đổi như thế nào theo thời gian, điều kiện xảy ra tai nạn, loại phương tiện và đặc điểm người thương vong?
+
+Dashboard của nhóm cần trả lời ngắn gọn ba câu hỏi chính:
+
+\begin{itemize}
+    \item Số vụ va chạm và số người thương vong biến động ra sao theo thời gian?
+    \item Những điều kiện đường sá, thời tiết, ánh sáng hoặc tốc độ nào thường đi kèm với tai nạn nghiêm trọng?
+    \item Nhóm phương tiện và nhóm người tham gia giao thông nào có rủi ro thương vong cao hơn?
+\end{itemize}
 
 \subsection{Mục tiêu phân tích cụ thể của từng thành viên}
-Để giải quyết bài toán lớn ở trên, mỗi thành viên trong nhóm chịu trách nhiệm đi sâu vào một khía cạnh cụ thể của bộ dữ liệu (tương ứng với số mục tiêu bằng số thành viên của nhóm):
+
+Mỗi thành viên phụ trách một góc nhìn nhỏ, có thể trình bày bằng một cụm biểu đồ ngắn trong báo cáo và một phần trên dashboard tổng hợp.
 
 \begin{enumerate}
-    \item \textbf{Mục tiêu 1 (Thành viên A) - Phân tích Xu hướng Thời gian \& Các chỉ số đo lường vĩ mô}:
-    \begin{itemize}
-        \item \textit{Câu hỏi phân tích}: Các chỉ số đo lường cốt lõi (KPIs) biến động như thế nào qua các chu kỳ thời gian (năm, quý, tháng, tuần)? Có tồn tại yếu tố mùa vụ hoặc xu hướng tăng trưởng/suy thoái dài hạn hay không?
-        \item \textit{Ý nghĩa}: Cung cấp cái nhìn toàn cảnh về hiệu quả hoạt động theo tiến trình lịch sử để đưa ra các kế hoạch/chiến lược trung và dài hạn.
-    \end{itemize}
+    \item \textbf{Lê Lâm Trí Đức -- Tổng quan và xu hướng thời gian}
+    
+    Phân tích số vụ va chạm, số phương tiện liên quan và số người thương vong theo năm, tháng, ngày trong tuần và giờ trong ngày. Mục tiêu là xác định giai đoạn hoặc khung thời gian có số vụ tai nạn cao bất thường.
 
-    \item \textbf{Mục tiêu 2 (Thành viên B) - Phân tích Phân loại Đối tượng \& Danh mục}:
-    \begin{itemize}
-        \item \textit{Câu hỏi phân tích}: Tỷ lệ cơ cấu đóng góp và hiệu suất hoạt động của các danh mục phân loại chính trong dữ liệu ra sao? Những nhóm đối tượng nào mang lại kết quả tốt nhất và nhóm nào kém hiệu quả cần cải tiến hoặc loại bỏ?
-        \item \textit{Ý nghĩa}: Hỗ trợ ra quyết định tối ưu hóa tài nguyên bằng cách tập trung vào các danh mục chủ lực hoặc cải tiến các nhóm yếu kém.
-    \end{itemize}
+    \item \textbf{Hoàng Quốc Việt -- Điều kiện đường sá và môi trường}
+    
+    So sánh số vụ tai nạn và mức độ nghiêm trọng theo loại đường, giới hạn tốc độ, điều kiện ánh sáng, thời tiết và mặt đường. Mục tiêu là nhận diện những bối cảnh môi trường có tỷ lệ tai nạn nghiêm trọng cao.
 
-    \item \textbf{Mục tiêu 3 (Thành viên C) - Phân tích Hành vi \& Phân khúc Nhóm Chủ thể}:
-    \begin{itemize}
-        \item \textit{Câu hỏi phân tích}: Các nhóm chủ thể chính (ví dụ: khách hàng, chi nhánh, người dùng...) phân khúc như thế nào? Đặc trưng chi tiêu, tần suất tương tác hoặc mức độ hoạt động của các phân khúc đó có sự khác biệt rõ rệt như thế nào?
-        \item \textit{Ý nghĩa}: Giúp xây dựng các giải pháp tiếp cận hoặc quản trị mang tính cá nhân hóa cho từng nhóm đối tượng cụ thể để gia tăng hiệu quả tối đa.
-    \end{itemize}
+    \item \textbf{Nguyễn Lê Thế Vinh -- Phương tiện và người lái}
+    
+    Phân tích tai nạn theo loại phương tiện, độ tuổi người lái, giới tính người lái và thao tác di chuyển của phương tiện. Mục tiêu là xác định nhóm phương tiện hoặc nhóm người lái xuất hiện nhiều trong các vụ tai nạn nghiêm trọng.
 
-    \item \textbf{Mục tiêu 4 (Thành viên D) - Phân tích Mối tương quan \& Hiệu quả Vận hành}:
-    \begin{itemize}
-        \item \textit{Câu hỏi phân tích}: Mối liên hệ hoặc tương quan giữa các biến số độc lập và biến số phụ thuộc trong hệ thống hoạt động là gì? Các biến số điều kiện ảnh hưởng thế nào đến kết quả vận hành cuối cùng?
-        \item \textit{Ý nghĩa}: Giúp phát hiện quy luật ngầm, xác định điểm hòa vốn hoặc ngưỡng tối ưu trong hoạt động thực tiễn của đối tượng nghiên cứu.
-    \end{itemize}
+    \item \textbf{Phạm Quang Vinh -- Người thương vong và nhóm rủi ro}
+    
+    Phân tích mức độ thương vong theo nhóm tuổi, giới tính, vai trò tham gia giao thông và loại đối tượng thương vong. Mục tiêu là chỉ ra nhóm người tham gia giao thông cần được chú ý hơn trong các khuyến nghị an toàn.
 \end{enumerate}
+
+Với cách chia này, các mục tiêu đủ nhỏ để triển khai trong phạm vi báo cáo thực hành, đồng thời vẫn liên kết trực tiếp với bài toán chung về mức độ nghiêm trọng và rủi ro tai nạn giao thông.

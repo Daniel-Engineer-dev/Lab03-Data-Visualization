@@ -1,101 +1,105 @@
 \section{Phân tích Dữ liệu và Trực quan hóa}
 \label{sec:visualization}
 
-Chương này trình bày chi tiết quy trình thực hiện phân tích và thiết lập các biểu đồ trực quan hóa dữ liệu của từng thành viên trong nhóm nhằm giải quyết các bài toán cụ thể.
+Chương này trình bày sườn phân tích và các biểu đồ dự kiến cho bốn mục tiêu đã xác định ở Chương~\ref{sec:analysis_goals}. Để báo cáo ngắn gọn, mỗi mục tiêu chỉ sử dụng hai biểu đồ chính, được ghép chung trong một hình minh họa và đi kèm các nhận xét quan trọng nhất.
 
-\subsection{Quy định chung về thiết kế và sử dụng màu sắc}
-Để hệ thống Dashboard đảm bảo tính thống nhất, trực quan và đạt hiệu quả thẩm mỹ cao nhất, nhóm đã thống nhất bộ quy chuẩn thiết kế giao diện sau:
+\subsection{Tổng quan và xu hướng thời gian}
+
+\textbf{Thành viên phụ trách}: Lê Lâm Trí Đức.
+
+\textbf{Mục tiêu}: Trình bày bức tranh tổng quan về số vụ va chạm, số phương tiện liên quan và số người thương vong trong giai đoạn 2020--2024; đồng thời xác định các thời điểm có tần suất tai nạn cao.
+
+\textbf{Biểu đồ đề xuất}:
 \begin{itemize}
-    \item \textbf{Bảng màu chủ đạo (Color Palette)}: Sử dụng một tông màu chính (Primary Color - ví dụ màu xanh navy, xám đen...) chiếm khoảng 60\% diện tích hiển thị để định hình phong cách chuyên nghiệp; một tông màu phụ (Secondary Color) chiếm 30\% để bổ trợ phân chia thông tin; và một tông màu nhấn nổi bật (Accent Color - ví dụ màu cam, đỏ nhạt...) chiếm 10\% dùng để làm nổi bật các giá trị quan trọng hoặc các điểm dị thường cần chú ý.
-    \item \textbf{Lựa chọn biểu đồ (Chart Selection)}: Tuân thủ quy tắc chọn biểu đồ phù hợp với bản chất dữ liệu (Ví dụ: biểu đồ đường dùng cho xu hướng thời gian, biểu đồ cột dùng để so sánh các hạng mục rời rạc, biểu đồ phân tán dùng để tìm mối tương quan, bảng/ma trận dùng cho thông tin chi tiết).
-    \item \textbf{Bố cục (Layout)}: Thiết kế Dashboard dạng lưới, căn lề thẳng hàng, luồng thông tin đi từ trên xuống dưới và từ trái qua phải (theo thói quen đọc thông tin thông thường).
+    \item Line chart: số vụ va chạm theo tháng hoặc năm.
+    \item Heatmap: số vụ va chạm theo ngày trong tuần và giờ trong ngày.
 \end{itemize}
 
----
-
-\subsection{Phân tích của Thành viên A: Xu hướng Thời gian \& Các chỉ số đo lường vĩ mô}
-\subsubsection{Mục tiêu phân tích}
-\textit{[Nhóm tự điền mục tiêu cụ thể. Ví dụ: Xác định sự thay đổi của các đại lượng theo năm, quý, tháng; phát hiện quy luật mùa vụ hoặc các điểm đột biến tăng/giảm].}
-
-\subsubsection{Các biểu đồ và phương pháp trực quan hóa}
-\begin{itemize}
-    \item \textbf{Biểu đồ sử dụng}: \textit{[Ví dụ: Line Chart, Stacked Column Chart, KPI Card...]}.
-    \item \textbf{Lý do lựa chọn}: \textit{[Giải thích ngắn gọn lý do tại sao biểu đồ đó phù hợp nhất để thể hiện tính chất thay đổi theo thời gian...]}.
-\end{itemize}
+\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về xu hướng tăng/giảm, tháng hoặc khung giờ nổi bật và thời điểm có số vụ tai nạn cao hơn mặt bằng chung.
 
 \begin{figure}[H]
     \centering
-    % Nhóm chụp ảnh màn hình biểu đồ thực tế và lưu đè lên file ảnh tương ứng trong thư mục images/
     \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberA_charts.png}
-    \caption{Biểu đồ trực quan hóa xu hướng thời gian và các KPI vĩ mô của Thành viên A}
+    \caption{Biểu đồ tổng quan và xu hướng thời gian}
     \label{fig:memberA}
 \end{figure}
 
-\subsubsection{Kết quả phân tích và nhận xét}
-\textit{[Nhóm tự viết kết quả phân tích thu được từ biểu đồ. Chỉ ra xu hướng tổng thể là tăng hay giảm, có tính chu kỳ tại thời điểm nào trong năm hay không, và đề xuất phán đoán nguyên nhân dẫn đến sự biến động đó].}
+\subsection{Điều kiện đường sá và môi trường}
 
----
+\textbf{Thành viên phụ trách}: Hoàng Quốc Việt.
 
-\subsection{Phân tích của Thành viên B: Phân loại Đối tượng \& Danh mục}
-\subsubsection{Mục tiêu phân tích}
-\textit{[Nhóm tự điền mục tiêu cụ thể. Ví dụ: So sánh đóng góp tỷ lệ phần trăm hoặc giá trị tuyệt đối giữa các nhóm sản phẩm, khu vực hoạt động, loại giao dịch...]}.
+\textbf{Mục tiêu}: So sánh mức độ nghiêm trọng của tai nạn theo các điều kiện xảy ra va chạm, gồm loại đường, giới hạn tốc độ, ánh sáng, thời tiết và tình trạng mặt đường.
 
-\subsubsection{Các biểu đồ và phương pháp trực quan hóa}
+\textbf{Biểu đồ đề xuất}:
 \begin{itemize}
-    \item \textbf{Biểu đồ sử dụng}: \textit{[Ví dụ: Treemap, Clustered Bar Chart, Donut Chart...]}.
-    \item \textbf{Lý do lựa chọn}: \textit{[Giải thích lý do chọn biểu đồ để so sánh phần trăm hoặc xếp hạng các danh mục từ cao đến thấp...]}.
+    \item Stacked bar chart: số vụ va chạm theo \texttt{collision\_severity} và \texttt{road\_type}.
+    \item Matrix hoặc clustered bar chart: mức độ nghiêm trọng theo thời tiết và điều kiện ánh sáng.
 \end{itemize}
+
+\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về loại đường hoặc điều kiện môi trường thường xuất hiện trong các vụ tai nạn nghiêm trọng.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberB_charts.png}
-    \caption{Biểu đồ trực quan hóa phân tích theo danh mục của Thành viên B}
+    \caption{Biểu đồ phân tích điều kiện đường sá và môi trường}
     \label{fig:memberB}
 \end{figure}
 
-\subsubsection{Kết quả phân tích và nhận xét}
-\textit{[Nhóm tự viết nhận xét từ biểu đồ thực tế. Liệt kê danh mục nào chiếm ưu thế tuyệt đối, danh mục nào hoạt động kém nhất, cơ cấu tỷ trọng giữa các nhóm có sự chênh lệch lớn hay không].}
+\subsection{Phương tiện và người lái}
 
----
+\textbf{Thành viên phụ trách}: Nguyễn Lê Thế Vinh.
 
-\subsection{Phân tích của Thành viên C: Hành vi \& Phân khúc Nhóm Chủ thể}
-\subsubsection{Mục tiêu phân tích}
-\textit{[Nhóm tự điền mục tiêu cụ thể. Ví dụ: Đánh giá phân loại nhóm người dùng, xếp hạng hiệu quả hoạt động của các chi nhánh hoặc đại lý, tìm hiểu mức độ tương tác của khách hàng...]}.
+\textbf{Mục tiêu}: Phân tích đặc điểm phương tiện và người lái trong các vụ va chạm, từ đó nhận diện nhóm phương tiện hoặc nhóm người lái xuất hiện nhiều trong các vụ tai nạn nghiêm trọng.
 
-\subsubsection{Các biểu đồ và phương pháp trực quan hóa}
+\textbf{Biểu đồ đề xuất}:
 \begin{itemize}
-    \item \textbf{Biểu đồ sử dụng}: \textit{[Ví dụ: Matrix Table, Stacked Column Chart, Scatter Plot...]}.
-    \item \textbf{Lý do lựa chọn}: \textit{[Giải thích lý do chọn biểu đồ này để thể hiện sự phân nhóm chủ thể và hiển thị các thước đo chi tiết...]}.
+    \item Bar chart: số phương tiện liên quan theo \texttt{vehicle\_type}.
+    \item Stacked column chart: mức độ nghiêm trọng theo nhóm tuổi người lái.
 \end{itemize}
+
+\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về loại phương tiện chiếm tỷ trọng cao và nhóm tuổi người lái cần chú ý.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberC_charts.png}
-    \caption{Biểu đồ trực quan hóa phân khúc nhóm chủ thể của Thành viên C}
+    \caption{Biểu đồ phân tích phương tiện và người lái}
     \label{fig:memberC}
 \end{figure}
 
-\subsubsection{Kết quả phân tích và nhận xét}
-\textit{[Nhóm tự viết kết quả phân tích hành vi. Chỉ ra sự khác biệt về đặc trưng hoạt động giữa các phân khúc, những chủ thể nào thuộc nhóm xuất sắc nhất/kém nhất và mô tả các insight về hành vi của họ].}
+\subsection{Người thương vong và nhóm rủi ro}
 
----
+\textbf{Thành viên phụ trách}: Phạm Quang Vinh.
 
-\subsection{Phân tích của Thành viên D: Mối tương quan \& Hiệu quả Vận hành}
-\subsubsection{Mục tiêu phân tích}
-\textit{[Nhóm tự điền mục tiêu cụ thể. Ví dụ: Đánh giá mối quan hệ nhân quả giữa hai biến số số lượng và chi phí, đo lường thời gian trễ của quy trình, tìm điểm tối ưu...]}.
+\textbf{Mục tiêu}: Phân tích đặc điểm người thương vong theo độ tuổi, giới tính, vai trò tham gia giao thông và mức độ thương vong để xác định các nhóm rủi ro cao.
 
-\subsubsection{Các biểu đồ và phương pháp trực quan hóa}
+\textbf{Biểu đồ đề xuất}:
 \begin{itemize}
-    \item \textbf{Biểu đồ sử dụng}: \textit{[Ví dụ: Scatter Chart, Waterfall Chart, Combo Chart...]}.
-    \item \textbf{Lý do lựa chọn}: \textit{[Giải thích lý do chọn biểu đồ phân tán để thấy phân bố tương quan hoặc biểu đồ thác nước để thấy luồng cộng/trừ chỉ số...]}.
+    \item Stacked bar chart: số người thương vong theo \texttt{casualty\_severity} và nhóm tuổi.
+    \item Bar chart: số người thương vong theo vai trò tham gia giao thông.
 \end{itemize}
+
+\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về nhóm tuổi hoặc vai trò có mức độ thương vong cao và nhóm đối tượng nên được ưu tiên trong khuyến nghị an toàn.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberD_charts.png}
-    \caption{Biểu đồ trực quan hóa mối tương quan và hiệu quả vận hành của Thành viên D}
+    \caption{Biểu đồ phân tích người thương vong và nhóm rủi ro}
     \label{fig:memberD}
 \end{figure}
 
-\subsubsection{Kết quả phân tích và nhận xét}
-\textit{[Nhóm tự viết nhận xét từ biểu đồ thực tế. Chỉ ra mối tương quan là thuận hay nghịch, mạnh hay yếu, các điểm tối ưu vận hành nằm ở đâu và quy luật rút ra từ dữ liệu].}
+\subsection{Giao diện dashboard tổng hợp}
+
+Sau khi hoàn thành các biểu đồ theo từng mục tiêu, nhóm tổng hợp chúng vào một dashboard chính trong Power BI. Dashboard nên ưu tiên bố cục gọn trên một trang: hàng đầu là các KPI tổng quan; các khu vực còn lại lần lượt trình bày tám biểu đồ chính của bốn mục tiêu.
+
+\begin{figure}[H]
+    \centering
+    % Nhóm chụp ảnh dashboard tổng hợp thực tế trong Power BI và lưu đè lên file này.
+    \IfFileExists{images/dashboard_overview.png}{
+        \includegraphics[width=0.95\textwidth, keepaspectratio]{images/dashboard_overview.png}
+    }{
+        \fbox{\parbox[c][7cm][c]{0.9\textwidth}{\centering
+        Vị trí chèn ảnh dashboard tổng hợp thực tế từ Power BI}}
+    }
+    \caption{Giao diện dashboard tổng hợp của nhóm}
+    \label{fig:dashboard_overview}
+\end{figure}

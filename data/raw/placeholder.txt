@@ -1,1 +1,0 @@
-Đặt các file dữ liệu thô (CSV, Excel) đã tải từ nguồn mở vào thư mục này để tiền xử lý.

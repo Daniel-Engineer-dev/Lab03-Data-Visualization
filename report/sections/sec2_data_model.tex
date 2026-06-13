@@ -1,57 +1,113 @@
 \section{Lựa chọn Dataset và Xây dựng Mô hình Dữ liệu}
 \label{sec:data_model}
 
-Chương này dùng để mô tả chi tiết về nguồn gốc bộ dữ liệu, cấu trúc các bảng dữ liệu quan hệ, quy trình tiền xử lý dữ liệu và cách thiết lập mô hình dữ liệu trong Power BI của nhóm.
+Chương này trình bày nguồn dữ liệu được nhóm lựa chọn, cấu trúc các bảng dữ liệu chính, mô hình quan hệ dùng trong Power BI và các bước tiền xử lý cần thiết trước khi xây dựng dashboard.
 
 \subsection{Giới thiệu nguồn dữ liệu và lý do lựa chọn}
-\textit{[Hướng dẫn điền: Nhóm tự điền thông tin giới thiệu nguồn dữ liệu mà nhóm đã thống nhất lựa chọn (ví dụ: Kaggle, World Bank, Data.gov...). Nêu rõ lý do lựa chọn bộ dữ liệu này (kích thước dữ liệu, tính thực tiễn, mức độ phong phú của các mối quan hệ giữa các bảng) và cung cấp đường dẫn/liên kết tải dữ liệu công khai].}
+
+Dataset được sử dụng trong đồ án là \textbf{UK Road Safety / STATS19 Road Safety Open Data}, do \textbf{UK Department for Transport} công bố công khai tại cổng dữ liệu của Chính phủ Vương quốc Anh. Bộ dữ liệu ghi nhận các vụ va chạm giao thông đường bộ có gây thương vong cá nhân trên đường công cộng tại Great Britain.
+
+Nhóm sử dụng phiên bản \textbf{Road Safety Data - latest 5 years}, bao gồm dữ liệu trong giai đoạn \textbf{2020--2024}. Các file dữ liệu thô được lưu trong thư mục \texttt{data/raw} của project. Khi import vào Power BI, nhóm đặt tên lại các bảng như sau:
+
+\begin{itemize}
+    \item \texttt{Collisions}: dữ liệu vụ va chạm.
+    \item \texttt{Vehicles}: dữ liệu phương tiện liên quan đến từng vụ va chạm.
+    \item \texttt{Casualties}: dữ liệu người thương vong trong từng vụ va chạm.
+    \item \texttt{Data Guide}: tài liệu giải thích ý nghĩa trường dữ liệu và các mã phân loại.
+\end{itemize}
+
+Bộ dữ liệu này được lựa chọn vì có nguồn gốc chính thức, quy mô đủ lớn và có cấu trúc quan hệ rõ ràng giữa ba bảng \texttt{collision}, \texttt{vehicle} và \texttt{casualty}. Dữ liệu cũng chứa nhiều chiều phân tích quan trọng như thời gian, vị trí, điều kiện thời tiết, điều kiện ánh sáng, loại đường, giới hạn tốc độ, loại phương tiện, nhóm tuổi và mức độ thương vong. Do đó, dataset phù hợp để xây dựng mô hình dữ liệu trong Power BI và triển khai các dashboard phân tích về an toàn giao thông.
 
 \subsection{Mô tả các bảng dữ liệu và trường thông tin quan trọng}
-Bộ dữ liệu sử dụng trong đồ án là cơ sở dữ liệu quan hệ (relational dataset) gồm ít nhất 2-3 bảng dữ liệu có liên kết với nhau. Dưới đây là mô tả chi tiết cấu trúc các bảng dữ liệu của nhóm:
 
-\begin{enumerate}
-    \item \textbf{Bảng dữ liệu chính (Fact Table - Ví dụ: Bảng giao dịch, bảng sự kiện...)}:
-    \begin{itemize}
-        \item \texttt{[Tên trường khóa chính]} (Khóa chính): Mã định danh duy nhất của mỗi dòng giao dịch.
-        \item \texttt{[Tên trường khóa ngoại]} (Khóa ngoại): Liên kết đến các bảng chiều (Dimension tables).
-        \item \texttt{[Tên trường số đo lường]} (Ví dụ: Doanh số, số lượng, điểm số, thời gian...): Các biến định lượng dùng để tính toán chỉ số.
-        \item \texttt{[Mô tả các trường thông tin khác...]}
-    \end{itemize}
-    
-    \item \textbf{Bảng dữ liệu chiều thứ nhất (Dimension Table 1 - Ví dụ: Khách hàng, sản phẩm, địa điểm...)}:
-    \begin{itemize}
-        \item \texttt{[Tên trường khóa chính]} (Khóa chính): Mã định danh duy nhất của thực thể.
-        \item \texttt{[Các trường thuộc tính]} (Ví dụ: Tên, phân loại, trạng thái...): Dùng để lọc và phân nhóm dữ liệu.
-    \end{itemize}
+Sau khi kiểm tra raw data, bộ dữ liệu gồm ba bảng chính với quy mô như Bảng~\ref{tab:dataset_tables}.
 
-    \item \textbf{Bảng dữ liệu chiều thứ hai (Dimension Table 2 - Ví dụ: Thời gian, chi nhánh, loại hình...)}:
-    \begin{itemize}
-        \item \texttt{[Tên trường khóa chính]} (Khóa chính): Mã định danh duy nhất của thực thể.
-        \item \texttt{[Các trường thuộc tính]} (Ví dụ: Địa chỉ, vùng miền, danh mục con...): Dùng để lọc và phân nhóm dữ liệu.
-    \end{itemize}
-    
-    \item \textit{[Thêm các bảng khác nếu có...]}
-\end{enumerate}
+\begin{table}[H]
+\centering
+\begin{tabular}{|C{3.2cm}|C{2.4cm}|C{2.2cm}|C{6.1cm}|}
+\hline
+\textbf{Bảng} & \textbf{Số dòng} & \textbf{Vai trò} & \textbf{Ý nghĩa} \\ \hline
+\texttt{Collisions} & 503,475 & Fact chính & Một dòng tương ứng với một vụ va chạm; chứa ngày, giờ, vị trí, mức độ nghiêm trọng, số phương tiện, số thương vong và điều kiện xảy ra tai nạn. \\ \hline
+\texttt{Vehicles} & 920,692 & Fact chi tiết & Một dòng tương ứng với một phương tiện trong một vụ va chạm; chứa loại phương tiện, thao tác di chuyển, hướng đi, thông tin người lái và đặc điểm phương tiện. \\ \hline
+\texttt{Casualties} & 640,522 & Fact chi tiết & Một dòng tương ứng với một người thương vong; chứa mức độ thương vong, nhóm tuổi, giới tính, vai trò tham gia giao thông và loại đối tượng bị thương. \\ \hline
+\end{tabular}
+\caption{Các bảng dữ liệu chính trong dataset STATS19}
+\label{tab:dataset_tables}
+\end{table}
 
-\subsection{Mô hình dữ liệu quan hệ (Data Model) trong Power BI}
-Sau khi nạp các bảng dữ liệu vào Power BI Desktop, nhóm tiến hành thiết lập mối quan hệ giữa các bảng (quan hệ một - nhiều $1:\infty$ hoặc một - một $1:1$ thông qua các trường khóa ngoại) để tạo thành mô hình hình sao (Star Schema) hoặc mô hình bông tuyết (Snowflake Schema):
+\subsubsection*{Bảng \texttt{Collisions}}
+
+Bảng \texttt{Collisions} là bảng trung tâm của mô hình dữ liệu. Trường \texttt{collision\_index} đóng vai trò khóa định danh duy nhất cho mỗi vụ va chạm. Ngoài ra, bảng này còn có các nhóm trường:
+
+\begin{itemize}
+    \item \texttt{collision\_year}, \texttt{date}, \texttt{time}, \texttt{day\_of\_week}: phục vụ phân tích xu hướng theo năm, tháng, ngày trong tuần và khung giờ.
+    \item \texttt{longitude}, \texttt{latitude}, \texttt{local\_authority\_district}: phục vụ phân tích theo không gian và khu vực.
+    \item \texttt{collision\_severity}: mức độ nghiêm trọng của vụ va chạm.
+    \item \texttt{number\_of\_vehicles}, \texttt{number\_of\_casualties}: số phương tiện và số người thương vong trong vụ va chạm.
+    \item Nhóm điều kiện xảy ra tai nạn: loại đường, giới hạn tốc độ, ánh sáng, thời tiết và tình trạng mặt đường.
+\end{itemize}
+
+\subsubsection*{Bảng \texttt{Vehicles}}
+
+Bảng \texttt{Vehicles} lưu thông tin các phương tiện liên quan đến từng vụ va chạm. Mỗi vụ va chạm có thể có một hoặc nhiều phương tiện. Các trường chính gồm:
+
+\begin{itemize}
+    \item \texttt{collision\_index}: khóa ngoại liên kết với bảng \texttt{Collisions}.
+    \item \texttt{vehicle\_reference}: mã thứ tự phương tiện trong từng vụ va chạm.
+    \item \texttt{vehicle\_type}: loại phương tiện.
+    \item \texttt{vehicle\_manoeuvre}, \texttt{vehicle\_direction\_from}, \texttt{vehicle\_direction\_to}: hành vi và hướng di chuyển của phương tiện.
+    \item \texttt{sex\_of\_driver}, \texttt{age\_of\_driver}, \texttt{age\_band\_of\_driver}: đặc điểm người lái.
+    \item \texttt{engine\_capacity\_cc}, \texttt{propulsion\_code}, \texttt{age\_of\_vehicle}: đặc điểm kỹ thuật của phương tiện.
+\end{itemize}
+
+\subsubsection*{Bảng \texttt{Casualties}}
+
+Bảng \texttt{Casualties} lưu thông tin người bị thương hoặc tử vong trong các vụ va chạm. Một vụ va chạm có thể có nhiều thương vong. Các trường chính gồm:
+
+\begin{itemize}
+    \item \texttt{collision\_index}: khóa ngoại liên kết với bảng \texttt{Collisions}.
+    \item \texttt{vehicle\_reference}: liên kết người thương vong với phương tiện liên quan.
+    \item \texttt{casualty\_reference}: mã thứ tự thương vong trong từng vụ va chạm.
+    \item \texttt{casualty\_class}: vai trò của người thương vong, ví dụ người lái, hành khách hoặc người đi bộ.
+    \item \texttt{sex\_of\_casualty}, \texttt{age\_of\_casualty}, \texttt{age\_band\_of\_casualty}: đặc điểm nhân khẩu học của người thương vong.
+    \item \texttt{casualty\_severity}: mức độ thương vong.
+    \item \texttt{casualty\_type}: loại đối tượng tham gia giao thông bị thương vong.
+\end{itemize}
+
+\subsection{Mô hình dữ liệu quan hệ trong Power BI}
+
+Mô hình dữ liệu của nhóm được xây dựng xoay quanh bảng \texttt{Collisions}. Trường khóa liên kết chính giữa ba bảng là \texttt{collision\_index}. Qua kiểm tra raw data, toàn bộ khóa trong bảng \texttt{Vehicles} và \texttt{Casualties} đều tồn tại trong bảng \texttt{Collisions}, nên mô hình có thể thiết lập quan hệ một-nhiều ổn định.
 
 \begin{figure}[H]
     \centering
-    % Nhóm sẽ chụp ảnh màn hình Model View thực tế trong Power BI của mình và lưu đè lên file này
+    % Thay ảnh này bằng screenshot Model View thực tế sau khi tạo relationship trong Power BI.
     \includegraphics[width=0.85\textwidth, keepaspectratio]{images/data_model_diagram.png}
-    \caption{Sơ đồ mối quan hệ (Data Model) thực tế trong Power BI của nhóm}
+    \caption{Sơ đồ mối quan hệ dữ liệu dự kiến trong Power BI}
     \label{fig:data_model}
 \end{figure}
 
-\textit{[Nhóm tự điền: Mô tả chi tiết mối quan hệ giữa các bảng đã liên kết. Ví dụ: Bảng A liên kết với bảng B qua trường khóa X với kiểu liên kết một-nhiều và chiều lọc hướng từ A sang B].}
+Các quan hệ chính được thiết lập trong Power BI như sau:
 
-\subsection{Quy trình tiền xử lý dữ liệu (Power Query)}
-Dữ liệu thô khi tải về thường chưa sẵn sàng để phân tích ngay, nhóm đã thực hiện quy trình làm sạch và tiền xử lý dữ liệu qua các bước sau trên Power Query Editor:
+\begin{itemize}
+    \item \texttt{Collisions} liên kết một-nhiều với \texttt{Vehicles} qua trường \texttt{collision\_index}.
+    \item \texttt{Collisions} liên kết một-nhiều với \texttt{Casualties} qua trường \texttt{collision\_index}.
+    \item \texttt{Vehicles} có thể đối chiếu với \texttt{Casualties} bằng cặp khóa gồm mã vụ va chạm và mã phương tiện khi cần phân tích thương vong theo phương tiện.
+    \item Bảng \texttt{Calendar} được tạo thêm trong Power BI và liên kết một-nhiều với \texttt{Collisions} qua trường \texttt{date}.
+\end{itemize}
+
+Với cấu trúc này, \texttt{Collisions} đóng vai trò bảng sự kiện trung tâm, còn \texttt{Vehicles} và \texttt{Casualties} là các bảng chi tiết mở rộng. Cách tổ chức này phù hợp với bài toán phân tích tai nạn giao thông vì cho phép xem dữ liệu ở nhiều cấp độ: cấp vụ va chạm, cấp phương tiện và cấp người thương vong.
+
+\subsection{Quy trình tiền xử lý dữ liệu}
+
+Trước khi xây dựng dashboard, nhóm thực hiện các bước tiền xử lý trong Power Query để đảm bảo dữ liệu nhất quán và dễ phân tích.
+
 \begin{enumerate}
-    \item \textbf{Xử lý giá trị trống hoặc lỗi (Null/Missing/Error Values)}: \textit{[Mô tả cách xử lý của nhóm, ví dụ: xóa dòng lỗi, điền giá trị trung vị hoặc giá trị mặc định cho ô trống...]}.
-    \item \textbf{Chuẩn hóa kiểu dữ liệu (Data Type Correction)}: \textit{[Mô tả cách chuẩn hóa định dạng số, ngày tháng, văn bản để tránh lỗi tính toán và lỗi phân tích địa lý...]}.
-    \item \textbf{Biến đổi và trích xuất đặc trưng (Feature Engineering)}: \textit{[Mô tả việc tách/gộp cột, tạo cột mới từ cột cũ, tạo bảng Calendar (bảng Date) bằng DAX hoặc Power Query để hỗ trợ phân tích thời gian...]}.
-    \item \textbf{Nối hoặc Gộp các bảng (Append/Merge Queries - Nếu có)}: \textit{[Mô tả cách gộp các file lẻ thành bảng lớn nếu có...]}.
+    \item \textbf{Đổi tên bảng}: đổi tên ba file CSV thành \texttt{Collisions}, \texttt{Vehicles} và \texttt{Casualties} để dễ quản lý trong Power BI.
+    \item \textbf{Chuẩn hóa kiểu dữ liệu}: chuyển \texttt{date} sang kiểu Date; chuyển các trường số về kiểu Whole Number hoặc Decimal Number, ví dụ số phương tiện, số thương vong, giới hạn tốc độ và tuổi người tham gia giao thông.
+    \item \textbf{Xử lý giá trị không xác định}: kiểm tra các mã như \texttt{-1}, \texttt{0}, \texttt{99} theo data guide vì nhiều trường dùng các mã này để biểu diễn Unknown, Not applicable hoặc Missing. Khi trực quan hóa, các giá trị này được đổi nhãn rõ ràng hoặc loại khỏi biểu đồ nếu không phù hợp với câu hỏi phân tích.
+    \item \textbf{Tạo bảng thời gian}: tạo bảng \texttt{Calendar} từ trường \texttt{Collisions[date]}, bổ sung các cột Year, Quarter, Month, Month Name, Day of Week và Hour để phân tích xu hướng.
+    \item \textbf{Giải mã trường phân loại}: sử dụng file data guide để diễn giải các trường mã hóa như \texttt{collision\_severity}, \texttt{casualty\_severity}, \texttt{road\_type}, \texttt{weather\_conditions}, \texttt{light\_conditions}, \texttt{vehicle\_type} và \texttt{casualty\_class}.
+    \item \textbf{Kiểm tra quan hệ}: xác nhận \texttt{collision\_index} là duy nhất trong bảng \texttt{Collisions}; đồng thời kiểm tra các khóa ngoại trong \texttt{Vehicles} và \texttt{Casualties} đều tham chiếu được về bảng \texttt{Collisions}.
 \end{enumerate}
-Quá trình tiền xử lý này đảm bảo dữ liệu luôn nhất quán, chính xác, giúp tối ưu hóa hiệu năng tính toán các measure DAX trong Power BI.
+
+Sau các bước trên, dữ liệu đã sẵn sàng để tạo các measure DAX cơ bản như tổng số vụ va chạm, tổng số phương tiện liên quan, tổng số thương vong, số vụ nghiêm trọng, tỷ lệ thương vong nghiêm trọng và các chỉ số so sánh theo thời gian, điều kiện môi trường hoặc loại phương tiện.
