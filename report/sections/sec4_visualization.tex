@@ -7,21 +7,33 @@ Chương này trình bày sườn phân tích và các biểu đồ dự kiến 
 
 \textbf{Thành viên phụ trách}: Lê Lâm Trí Đức.
 
-\textbf{Mục tiêu}: Trình bày bức tranh tổng quan về số vụ va chạm, số phương tiện liên quan và số người thương vong trong giai đoạn 2020--2024; đồng thời xác định các thời điểm có tần suất tai nạn cao.
+\textbf{Mục tiêu}: Trình bày bức tranh tổng quan về số vụ va chạm trong giai đoạn 2020--2024; đồng thời xác định các thời điểm có tần suất tai nạn cao.
 
-\textbf{Biểu đồ đề xuất}:
+\textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Line chart: số vụ va chạm theo tháng hoặc năm.
-    \item Heatmap: số vụ va chạm theo ngày trong tuần và giờ trong ngày.
+    \item Biểu đồ đường (Line chart): Thể hiện xu hướng số vụ va chạm phân theo mức độ nghiêm trọng (Nhẹ, Nghiêm trọng, Tử vong) giai đoạn 2020--2024.
+    \item Biểu đồ bản đồ nhiệt (Heatmap Matrix): Thể hiện mật độ số vụ va chạm theo ngày trong tuần (Thứ) và khung giờ trong ngày (0h -- 23h).
 \end{itemize}
 
-\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về xu hướng tăng/giảm, tháng hoặc khung giờ nổi bật và thời điểm có số vụ tai nạn cao hơn mặt bằng chung.
+\textbf{Nhận xét rút ra từ dữ liệu}:
+\begin{itemize}
+    \item \textbf{Xu hướng biến động theo năm}: Tổng số vụ va chạm có xu hướng tăng mạnh từ năm 2020 (đạt 91,2 nghìn vụ) và đạt đỉnh vào năm 2022 với 106,0 nghìn vụ. Sau năm 2022, số vụ va chạm bắt đầu có xu hướng giảm nhẹ về năm 2023 (104,3 nghìn vụ) và 2024 (100,9 nghìn vụ). Xu hướng này chủ yếu được chi phối bởi các vụ va chạm ở mức độ Nhẹ (Slight) chiếm tỷ trọng lớn nhất. Trong khi đó, các vụ tai nạn ở mức Nghiêm trọng (Serious) và Tử vong (Fatal) có xu hướng đi ngang hoặc tăng nhẹ qua các năm.
+    \item \textbf{Mật độ va chạm theo khung giờ}: Tai nạn giao thông chủ yếu tập trung vào ban ngày và đặc biệt tăng mạnh vào khung giờ tan tầm buổi chiều từ 15h00 đến 18h00 (đỉnh điểm lúc 16h00 -- 17h00) do lưu lượng giao thông đông đúc, tần suất đi lại tăng cao khi tan học và tan làm.
+    \item \textbf{Mật độ va chạm theo ngày trong tuần}: Tần suất xảy ra tai nạn giao thông vào các ngày làm việc trong tuần (Thứ Hai đến Thứ Sáu) cao hơn rõ rệt so với hai ngày cuối tuần (Thứ Bảy và Chủ Nhật). Sự kết hợp giữa ngày trong tuần và giờ trong ngày trên bản đồ nhiệt chỉ ra rằng, khoảng thời gian từ 16h00 đến 17h00 các ngày trong tuần là thời điểm có mật độ va chạm cao nhất cả tuần (thể hiện qua dải màu đỏ đậm nhất).
+\end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberA_charts.png}
-    \caption{Biểu đồ tổng quan và xu hướng thời gian}
-    \label{fig:memberA}
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberA_line_chart.png}
+    \caption{Biểu đồ xu hướng tai nạn giao thông qua các năm (2020 -- 2024)}
+    \label{fig:memberA_line}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth, keepaspectratio]{images/memberA_heatmap.png}
+    \caption{Biểu đồ mật độ va chạm theo Thứ và Khung giờ trong ngày}
+    \label{fig:memberA_heatmap}
 \end{figure}
 
 \subsection{Điều kiện đường sá và môi trường}
