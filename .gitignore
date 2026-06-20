@@ -34,6 +34,19 @@ data/raw/*.json
 # Giữ lại file placeholder để không bị mất thư mục trống trên Git
 !data/raw/placeholder.txt
 
+# --- Dữ liệu đã tiền xử lý (Processed data) ---
+# Dữ liệu sạch dùng chung và file Power BI nền có thể rất nặng (vài chục MB),
+# nên không đẩy lên Git mà chia sẻ qua Google Drive như dữ liệu raw.
+data/processed/*.pbix
+data/processed/*.csv
+data/processed/*.xlsx
+data/processed/*.xls
+data/processed/*.zip
+data/processed/*.json
+data/processed/*.parquet
+# Giữ lại file placeholder để không bị mất thư mục trống trên Git
+!data/processed/placeholder.txt
+
 # --- Power BI Temporary & Auto-recovery files ---
 powerbi/*.tmp
 powerbi/*.temp
@@ -51,6 +64,8 @@ video/*.mov
 .DS_Store
 Thumbs.db
 desktop.ini
+# File metadata sinh ra khi tải file về trên Windows/WSL (Alternate Data Stream)
+*:Zone.Identifier
 
 # --- VS Code (Chỉ bỏ qua các tệp lịch sử hoặc cá nhân, giữ lại settings.json cho LaTeX-Workshop) ---
 .vscode/.history/
