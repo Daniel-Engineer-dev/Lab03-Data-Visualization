@@ -40,19 +40,37 @@ Chương này trình bày sườn phân tích và các biểu đồ dự kiến 
 
 \textbf{Thành viên phụ trách}: Hoàng Quốc Việt.
 
-\textbf{Mục tiêu}: So sánh mức độ nghiêm trọng của tai nạn theo các điều kiện xảy ra va chạm, gồm loại đường, giới hạn tốc độ, ánh sáng, thời tiết và tình trạng mặt đường.
+\textbf{Mục tiêu}: Xem mức độ nghiêm trọng của các vụ va chạm thay đổi như thế nào theo bối cảnh xảy ra tai nạn. Trong phạm vi hai biểu đồ dưới đây, phần phân tích tập trung vào ba yếu tố chính: loại đường, thời tiết và điều kiện ánh sáng.
 
-\textbf{Biểu đồ đề xuất}:
+\textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Stacked bar chart: số vụ va chạm theo \texttt{collision\_severity} và \texttt{road\_type}.
-    \item Matrix hoặc clustered bar chart: mức độ nghiêm trọng theo thời tiết và điều kiện ánh sáng.
+    \item Biểu đồ cột xếp chồng: so sánh số vụ va chạm theo loại đường, đồng thời tách theo ba mức độ Nhẹ, Nghiêm trọng và Tử vong.
+    \item Ma trận bản đồ nhiệt: thể hiện tỷ lệ vụ nghiêm trọng hoặc tử vong theo từng tổ hợp giữa thời tiết và điều kiện ánh sáng.
 \end{itemize}
 
-\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về loại đường hoặc điều kiện môi trường thường xuất hiện trong các vụ tai nạn nghiêm trọng.
+\textbf{Nhận xét rút ra từ dữ liệu}:
+\begin{itemize}
+    \item \textbf{Đường đơn là nơi tập trung nhiều vụ va chạm nhất}: Trong giai đoạn 2020--2024, có khoảng 365,8 nghìn vụ xảy ra trên đường đơn, tương đương 72,7\% toàn bộ dữ liệu. Đây cũng là nhóm có số vụ nghiêm trọng hoặc tử vong lớn nhất, khoảng 91,5 nghìn vụ. Vì vậy, nếu xét theo số lượng tuyệt đối, đường đơn là nhóm cần nhìn trước tiên khi đánh giá tình hình chung.
+    \item \textbf{Không chỉ nhiều vụ, đường đơn còn có tỷ lệ vụ nặng cao hơn mức chung}: Tỷ lệ vụ nghiêm trọng hoặc tử vong trên đường đơn đạt khoảng 25,0\%, cao hơn tỷ lệ chung của toàn bộ dữ liệu là 23,3\%. Trong khi đó, đường đôi có số vụ đứng thứ hai với khoảng 74,7 nghìn vụ, nhưng tỷ lệ nghiêm trọng hoặc tử vong chỉ khoảng 22,2\%. Vòng xuyến còn thấp hơn, khoảng 16,5\%. Vì vậy, nếu chỉ nhìn cột cao hay thấp thì chưa đủ; cần đọc thêm tỷ trọng các mức độ nghiêm trọng bên trong từng loại đường.
+    \item \textbf{Điều kiện thiếu sáng là điểm nổi bật nhất trong ma trận}: Ở hàng Total của ma trận, nhóm ``Tối - không đèn'' có tỷ lệ vụ nghiêm trọng hoặc tử vong là 34,2\%, cao hơn rõ so với ban ngày là 22,3\%. Ngay cả trong điều kiện thời tiết khô ráo, không gió mạnh, tỷ lệ này vẫn lên đến 35,6\% khi xảy ra vào thời điểm tối không có đèn. Ô cao nhất trong ma trận là trường hợp ``Khô ráo, gió mạnh'' và ``Tối - không đèn'', đạt 40,0\%.
+    \item \textbf{Thời tiết bất lợi làm rủi ro tăng rõ hơn khi đi kèm ánh sáng kém}: Các nhóm ``Khô ráo, gió mạnh'', ``Sương mù'' và ``Mưa, gió mạnh'' có tỷ lệ nghiêm trọng hoặc tử vong lần lượt là 28,6\%, 27,3\% và 25,7\%, đều cao hơn mức chung 23,3\%. Tuy vậy, màu đậm nhất trên heatmap không chỉ nằm ở các dòng thời tiết xấu, mà thường xuất hiện khi thời tiết đó kết hợp với thiếu ánh sáng. Vì thế, trong nhóm điều kiện môi trường, ánh sáng là yếu tố đáng chú ý nhất khi phân tích các vụ tai nạn nặng.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberB_charts.png}
+    \begin{subfigure}{0.88\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_road_type_stacked_bar.png}
+        \caption{Số vụ va chạm theo loại đường và mức độ nghiêm trọng}
+    \end{subfigure}
+    
+    \vspace{0.25cm}
+    
+    \begin{subfigure}{0.88\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_weather_light_matrix.png}
+        \caption{Tỷ lệ vụ nghiêm trọng hoặc tử vong theo thời tiết và ánh sáng}
+    \end{subfigure}
     \caption{Biểu đồ phân tích điều kiện đường sá và môi trường}
     \label{fig:memberB}
 \end{figure}
