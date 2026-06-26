@@ -16,17 +16,40 @@ Màu sắc chủ đạo: **Blue (`#60A5FA`)**
 **BƯỚC 2: COPY MÃ JSON VÀO SPECIFICATION**
 ```json
 {
+  "title": {
+    "text": "Số vụ va chạm theo năm và mức độ",
+    "anchor": "start",
+    "fontSize": 16,
+    "offset": 10
+  },
   "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "datum.collision_severity_label == 'Fatal' ? 'Tử vong' : datum.collision_severity_label == 'Serious' ? 'Nghiêm trọng' : 'Nhẹ'",
+      "as": "MucDo_VN"
+    }
+  ],
+  "params": [
+    {
+      "name": "hover",
+      "select": {"type": "point", "on": "pointerover", "fields": ["MucDo_VN"]}
+    }
+  ],
   "mark": {
     "type": "line",
     "strokeWidth": 3,
     "point": {"filled": true}
   },
   "encoding": {
+    "opacity": {
+      "condition": {"param": "hover", "value": 1},
+      "value": 0.3
+    },
     "x": {
       "field": "Year",
       "type": "ordinal",
-      "title": "Năm"
+      "title": "Năm",
+      "axis": {"labelAngle": 0}
     },
     "y": {
       "field": "Total Collisions",
@@ -34,17 +57,17 @@ Màu sắc chủ đạo: **Blue (`#60A5FA`)**
       "title": "Tổng số vụ va chạm"
     },
     "color": {
-      "field": "collision_severity_label",
+      "field": "MucDo_VN",
       "type": "nominal",
       "title": "Mức độ nghiêm trọng",
       "scale": {
-        "domain": ["Fatal", "Serious", "Slight"],
+        "domain": ["Tử vong", "Nghiêm trọng", "Nhẹ"],
         "range": ["#EF4444", "#FBBF24", "#60A5FA"]
       }
     },
     "tooltip": [
       {"field": "Year", "title": "Năm"},
-      {"field": "collision_severity_label", "title": "Mức độ"},
+      {"field": "MucDo_VN", "title": "Mức độ"},
       {"field": "Total Collisions", "title": "Số vụ va chạm", "format": ","}
     ]
   }
@@ -62,18 +85,41 @@ Màu sắc chủ đạo: **Blue (`#60A5FA`)**
 **BƯỚC 2: COPY MÃ JSON VÀO SPECIFICATION**
 ```json
 {
+  "title": {
+    "text": "Số vụ va chạm theo tháng",
+    "anchor": "start",
+    "fontSize": 16,
+    "offset": 10
+  },
   "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "'Tháng ' + datum['Month Number']",
+      "as": "Thang_VN"
+    }
+  ],
+  "params": [
+    {
+      "name": "hover",
+      "select": {"type": "point", "on": "pointerover"}
+    }
+  ],
   "mark": {
     "type": "bar",
     "color": "#60A5FA",
     "cornerRadiusEnd": 4
   },
   "encoding": {
+    "opacity": {
+      "condition": {"param": "hover", "value": 1},
+      "value": 0.4
+    },
     "x": {
-      "field": "Month Name",
+      "field": "Thang_VN",
       "type": "nominal",
       "title": "Tháng",
-      "sort": {"field": "Month Number"}
+      "sort": {"field": "Month Number"},
+      "axis": {"labelAngle": -45}
     },
     "y": {
       "field": "Total Collisions",
@@ -81,7 +127,7 @@ Màu sắc chủ đạo: **Blue (`#60A5FA`)**
       "title": "Tổng số vụ va chạm"
     },
     "tooltip": [
-      {"field": "Month Name", "title": "Tháng"},
+      {"field": "Thang_VN", "title": "Tháng"},
       {"field": "Total Collisions", "title": "Số vụ", "format": ","}
     ]
   }
@@ -99,31 +145,55 @@ Màu sắc chủ đạo: **Blue (`#60A5FA`)**
 **BƯỚC 2: COPY MÃ JSON VÀO SPECIFICATION**
 ```json
 {
+  "title": {
+    "text": "Mật độ va chạm theo Thứ và Giờ",
+    "anchor": "start",
+    "fontSize": 16,
+    "offset": 10
+  },
   "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "datum.day_of_week_label == 'Monday' ? 'Thứ 2' : datum.day_of_week_label == 'Tuesday' ? 'Thứ 3' : datum.day_of_week_label == 'Wednesday' ? 'Thứ 4' : datum.day_of_week_label == 'Thursday' ? 'Thứ 5' : datum.day_of_week_label == 'Friday' ? 'Thứ 6' : datum.day_of_week_label == 'Saturday' ? 'Thứ 7' : 'Chủ nhật'",
+      "as": "Thu_VN"
+    }
+  ],
+  "params": [
+    {
+      "name": "hover",
+      "select": {"type": "point", "on": "pointerover"}
+    }
+  ],
   "mark": "rect",
   "encoding": {
+    "opacity": {
+      "condition": {"param": "hover", "value": 1},
+      "value": 0.4
+    },
     "y": {
-      "field": "day_of_week_label",
+      "field": "Thu_VN",
       "type": "nominal",
       "title": "Thứ trong tuần",
-      "sort": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+      "sort": ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"]
     },
     "x": {
       "field": "time",
       "type": "ordinal",
       "timeUnit": "hours",
-      "title": "Giờ trong ngày"
+      "title": "Giờ trong ngày",
+      "axis": {"format": "%H:00", "labelAngle": -45}
     },
     "color": {
+      "aggregate": "sum",
       "field": "Total Collisions",
       "type": "quantitative",
       "title": "Số vụ va chạm",
       "scale": {"scheme": "blues"}
     },
     "tooltip": [
-      {"field": "day_of_week_label", "title": "Thứ"},
-      {"field": "time", "timeUnit": "hours", "title": "Giờ"},
-      {"field": "Total Collisions", "title": "Số vụ va chạm", "format": ","}
+      {"field": "Thu_VN", "title": "Thứ"},
+      {"field": "time", "timeUnit": "hours", "title": "Giờ", "format": "%H:00"},
+      {"aggregate": "sum", "field": "Total Collisions", "title": "Số vụ va chạm", "format": ","}
     ]
   }
 }
@@ -140,9 +210,31 @@ Màu sắc chủ đạo: **Blue (`#60A5FA`)**
 **BƯỚC 2: COPY MÃ JSON VÀO SPECIFICATION**
 ```json
 {
+  "title": {
+    "text": "Số vụ va chạm theo năm và khu vực",
+    "anchor": "start",
+    "fontSize": 16,
+    "offset": 10
+  },
   "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "datum.urban_or_rural_area_label == 'Urban' ? 'Thành thị' : datum.urban_or_rural_area_label == 'Rural' ? 'Nông thôn' : datum.urban_or_rural_area_label",
+      "as": "KhuVuc_VN"
+    }
+  ],
+  "params": [
+    {
+      "name": "hover",
+      "select": {"type": "point", "on": "pointerover"}
+    }
+  ],
   "mark": {"type": "bar", "cornerRadiusEnd": 2},
   "encoding": {
+    "opacity": {
+      "condition": {"param": "hover", "value": 1},
+      "value": 0.4
+    },
     "y": {
       "field": "Year",
       "type": "ordinal",
@@ -154,17 +246,17 @@ Màu sắc chủ đạo: **Blue (`#60A5FA`)**
       "title": "Tổng số vụ va chạm"
     },
     "color": {
-      "field": "urban_or_rural_area_label",
+      "field": "KhuVuc_VN",
       "type": "nominal",
       "title": "Khu vực",
       "scale": {
-        "domain": ["Urban", "Rural"],
+        "domain": ["Thành thị", "Nông thôn"],
         "range": ["#60A5FA", "#1E40AF"]
       }
     },
     "tooltip": [
       {"field": "Year", "title": "Năm"},
-      {"field": "urban_or_rural_area_label", "title": "Khu vực"},
+      {"field": "KhuVuc_VN", "title": "Khu vực"},
       {"field": "Total Collisions", "title": "Số vụ va chạm", "format": ","}
     ]
   }
