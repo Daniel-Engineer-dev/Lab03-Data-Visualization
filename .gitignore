@@ -71,3 +71,4 @@ desktop.ini
 .vscode/.history/
 .vscode/*.log
 .vscode/sftp.json
+.agents/
