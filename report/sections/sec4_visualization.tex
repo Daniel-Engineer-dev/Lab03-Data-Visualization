@@ -1,90 +1,128 @@
 \section{Phân tích Dữ liệu và Trực quan hóa}
 \label{sec:visualization}
 
-Chương này trình bày sườn phân tích và các biểu đồ dự kiến cho bốn mục tiêu đã xác định ở Chương~\ref{sec:analysis_goals}. Để báo cáo ngắn gọn, mỗi mục tiêu chỉ sử dụng hai biểu đồ chính, được ghép chung trong một hình minh họa và đi kèm các nhận xét quan trọng nhất.
+Chương này trình bày chi tiết các biểu đồ phân tích và diễn giải kết quả cho bốn mục tiêu đã xác định ở Chương~\ref{sec:analysis_goals}. Các biểu đồ được thiết kế trực quan bằng Vega-Lite/Deneb kết hợp với các bộ lọc tương tác để làm nổi bật những phát hiện quan trọng nhất.
 
 \subsection{Tổng quan và xu hướng thời gian}
 
-
-\textbf{Mục tiêu}: Trình bày bức tranh tổng quan về số vụ va chạm trong giai đoạn 2020--2024; đồng thời xác định các thời điểm có tần suất tai nạn cao.
+\textbf{Mục tiêu}: Phân tích sự biến động của tổng số vụ va chạm trong giai đoạn 2020--2024, đồng thời xác định các khung thời gian có tần suất tai nạn cao bất thường.
 
 \textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Biểu đồ đường (Line chart): Thể hiện xu hướng số vụ va chạm phân theo mức độ nghiêm trọng (Nhẹ, Nghiêm trọng, Tử vong) giai đoạn 2020--2024.
-    \item Biểu đồ bản đồ nhiệt (Heatmap Matrix): Thể hiện mật độ số vụ va chạm theo ngày trong tuần (Thứ) và khung giờ trong ngày (0h -- 23h).
+    \item Biểu đồ cột xếp chồng (Stacked Bar Chart): Thể hiện tổng số vụ va chạm theo từng năm, phân loại theo khu vực Thành thị/Nông thôn.
+    \item Biểu đồ bản đồ nhiệt (Heatmap Matrix): Thể hiện mật độ số vụ va chạm theo từng thứ trong tuần và khung giờ trong ngày (00:00 -- 23:00).
+    \item Biểu đồ cột (Bar Chart): Thể hiện biến động tổng số vụ va chạm theo từng tháng trong năm.
+    \item Biểu đồ đường (Line Chart): Thể hiện xu hướng tai nạn phân theo mức độ nghiêm trọng (Tử vong, Nghiêm trọng, Nhẹ) qua các năm 2020--2024.
 \end{itemize}
 
 \textbf{Nhận xét rút ra từ dữ liệu}:
 \begin{itemize}
-    \item \textbf{Xu hướng biến động theo năm}: Tổng số vụ va chạm có xu hướng tăng mạnh từ năm 2020 (đạt 91,2 nghìn vụ) và đạt đỉnh vào năm 2022 với 106,0 nghìn vụ. Sau năm 2022, số vụ va chạm bắt đầu có xu hướng giảm nhẹ về năm 2023 (104,3 nghìn vụ) và 2024 (100,9 nghìn vụ). Xu hướng này chủ yếu được chi phối bởi các vụ va chạm ở mức độ Nhẹ (Slight) chiếm tỷ trọng lớn nhất. Trong khi đó, các vụ tai nạn ở mức Nghiêm trọng (Serious) và Tử vong (Fatal) có xu hướng đi ngang hoặc tăng nhẹ qua các năm.
-    \item \textbf{Mật độ va chạm theo khung giờ}: Tai nạn giao thông chủ yếu tập trung vào ban ngày và đặc biệt tăng mạnh vào khung giờ tan tầm buổi chiều từ 15h00 đến 18h00 (đỉnh điểm lúc 16h00 -- 17h00) do lưu lượng giao thông đông đúc, tần suất đi lại tăng cao khi tan học và tan làm.
-    \item \textbf{Mật độ va chạm theo ngày trong tuần}: Tần suất xảy ra tai nạn giao thông vào các ngày làm việc trong tuần (Thứ Hai đến Thứ Sáu) cao hơn rõ rệt so với hai ngày cuối tuần (Thứ Bảy và Chủ Nhật). Sự kết hợp giữa ngày trong tuần và giờ trong ngày trên bản đồ nhiệt chỉ ra rằng, khoảng thời gian từ 16h00 đến 17h00 các ngày trong tuần là thời điểm có mật độ va chạm cao nhất cả tuần (thể hiện qua dải màu đỏ đậm nhất).
+    \item \textbf{Xu hướng theo năm và khu vực}: Tổng số vụ va chạm tăng mạnh từ 2020 và đạt đỉnh vào 2022, sau đó có dấu hiệu giảm nhẹ về năm 2024. Đáng chú ý, các vụ tai nạn diễn ra ở khu vực Thành thị (màu xanh sáng) luôn chiếm tỷ trọng lớn hơn hẳn so với khu vực Nông thôn.
+    \item \textbf{Mật độ va chạm theo Thứ và Giờ}: Tai nạn tập trung dày đặc vào các ngày làm việc trong tuần (Thứ 2 đến Thứ 6). Đỉnh điểm rủi ro rơi vào khung giờ tan tầm buổi chiều từ 15h00 đến 18h00 (đậm nhất ở dải 16h00 -- 17h00), tương đồng với thời gian lưu lượng giao thông đông đúc. Vào cuối tuần, mật độ tai nạn giảm đi rõ rệt.
+    \item \textbf{Biến động theo tháng}: Tần suất va chạm có dấu hiệu tăng cao hơn vào những tháng cuối năm (từ Tháng 9 đến Tháng 11). Tháng 10 thường là tháng ghi nhận số lượng tai nạn cao nhất, có thể liên quan đến điều kiện thời tiết bắt đầu chuyển mùa.
+    \item \textbf{Mức độ nghiêm trọng khá ổn định}: Mặc dù tổng số vụ va chạm biến động qua các năm, tỷ trọng các vụ ở mức độ Nhẹ vẫn chiếm áp đảo tuyệt đối. Đường xu hướng của các vụ án Tử vong (màu đỏ) và Nghiêm trọng (màu vàng) duy trì khá phẳng và ổn định, cho thấy mức độ thảm khốc không tăng đột biến so với mức tăng của tổng số vụ tai nạn chung.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberA_line_chart.png}
-    \caption{Biểu đồ xu hướng tai nạn giao thông qua các năm (2020 -- 2024)}
-    \label{fig:memberA_line}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth, keepaspectratio]{images/memberA_heatmap.png}
-    \caption{Biểu đồ mật độ va chạm theo Thứ và Khung giờ trong ngày}
-    \label{fig:memberA_heatmap}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberA_year_area.png}
+        \caption{Số vụ theo năm và khu vực}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberA_heatmap.png}
+        \caption{Mật độ va chạm theo Thứ và Giờ}
+    \end{subfigure}
+    
+    \vspace{0.3cm}
+    
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberA_month.png}
+        \caption{Số vụ va chạm theo tháng}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberA_year_severity.png}
+        \caption{Số vụ theo năm và mức độ}
+    \end{subfigure}
+    \caption{Các biểu đồ phân tích Tổng quan và xu hướng thời gian}
+    \label{fig:memberA_charts}
 \end{figure}
 
 \subsection{Điều kiện đường sá và môi trường}
 
 
-\textbf{Mục tiêu}: Xem mức độ nghiêm trọng của các vụ va chạm thay đổi như thế nào theo bối cảnh xảy ra tai nạn. Trong phạm vi hai biểu đồ dưới đây, phần phân tích tập trung vào ba yếu tố chính: loại đường, thời tiết và điều kiện ánh sáng.
+\textbf{Mục tiêu}: Phân tích sự ảnh hưởng của các điều kiện môi trường (thời tiết, ánh sáng) và đặc điểm hạ tầng (tình trạng mặt đường, loại đường, giới hạn tốc độ) đối với số lượng và mức độ nghiêm trọng của các vụ va chạm.
 
 \textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Biểu đồ cột xếp chồng: so sánh số vụ va chạm theo loại đường, đồng thời tách theo ba mức độ Nhẹ, Nghiêm trọng và Tử vong.
-    \item Ma trận bản đồ nhiệt: thể hiện tỷ lệ vụ nghiêm trọng hoặc tử vong theo từng tổ hợp giữa thời tiết và điều kiện ánh sáng.
+    \item Biểu đồ cột nhóm (Grouped Bar Chart): Thể hiện tổng số vụ va chạm theo tình trạng mặt đường, phân tách theo khu vực (Thành thị/Nông thôn).
+    \item Biểu đồ bản đồ nhiệt (Heatmap Matrix): Thể hiện số vụ va chạm theo sự kết hợp giữa các điều kiện thời tiết và ánh sáng.
+    \item Biểu đồ cột (Bar Chart): So sánh số lượng các vụ tai nạn diễn ra trên các tuyến đường có mức giới hạn tốc độ khác nhau.
+    \item Biểu đồ cột xếp chồng (Stacked Bar Chart): Thể hiện số vụ va chạm phân bổ theo loại đường, phân lớp theo mức độ nghiêm trọng.
 \end{itemize}
 
 \textbf{Nhận xét rút ra từ dữ liệu}:
 \begin{itemize}
-    \item \textbf{Đường đơn là nơi tập trung nhiều vụ va chạm nhất}: Trong giai đoạn 2020--2024, có khoảng 365,8 nghìn vụ xảy ra trên đường đơn, tương đương 72,7\% toàn bộ dữ liệu. Đây cũng là nhóm có số vụ nghiêm trọng hoặc tử vong lớn nhất, khoảng 91,5 nghìn vụ. Vì vậy, nếu xét theo số lượng tuyệt đối, đường đơn là nhóm cần nhìn trước tiên khi đánh giá tình hình chung.
-    \item \textbf{Không chỉ nhiều vụ, đường đơn còn có tỷ lệ vụ nặng cao hơn mức chung}: Tỷ lệ vụ nghiêm trọng hoặc tử vong trên đường đơn đạt khoảng 25,0\%, cao hơn tỷ lệ chung của toàn bộ dữ liệu là 23,3\%. Trong khi đó, đường đôi có số vụ đứng thứ hai với khoảng 74,7 nghìn vụ, nhưng tỷ lệ nghiêm trọng hoặc tử vong chỉ khoảng 22,2\%. Vòng xuyến còn thấp hơn, khoảng 16,5\%. Vì vậy, nếu chỉ nhìn cột cao hay thấp thì chưa đủ; cần đọc thêm tỷ trọng các mức độ nghiêm trọng bên trong từng loại đường.
-    \item \textbf{Điều kiện thiếu sáng là điểm nổi bật nhất trong ma trận}: Ở hàng Total của ma trận, nhóm ``Tối - không đèn'' có tỷ lệ vụ nghiêm trọng hoặc tử vong là 34,2\%, cao hơn rõ so với ban ngày là 22,3\%. Ngay cả trong điều kiện thời tiết khô ráo, không gió mạnh, tỷ lệ này vẫn lên đến 35,6\% khi xảy ra vào thời điểm tối không có đèn. Ô cao nhất trong ma trận là trường hợp ``Khô ráo, gió mạnh'' và ``Tối - không đèn'', đạt 40,0\%.
-    \item \textbf{Thời tiết bất lợi làm rủi ro tăng rõ hơn khi đi kèm ánh sáng kém}: Các nhóm ``Khô ráo, gió mạnh'', ``Sương mù'' và ``Mưa, gió mạnh'' có tỷ lệ nghiêm trọng hoặc tử vong lần lượt là 28,6\%, 27,3\% và 25,7\%, đều cao hơn mức chung 23,3\%. Tuy vậy, màu đậm nhất trên heatmap không chỉ nằm ở các dòng thời tiết xấu, mà thường xuất hiện khi thời tiết đó kết hợp với thiếu ánh sáng. Vì thế, trong nhóm điều kiện môi trường, ánh sáng là yếu tố đáng chú ý nhất khi phân tích các vụ tai nạn nặng.
+    \item \textbf{Tình trạng mặt đường và Khu vực}: Hầu hết các vụ va chạm xảy ra trong điều kiện mặt đường "Khô ráo" ở khu vực "Thành thị" (khoảng 250 nghìn vụ). Mặc dù vậy, nhóm điều kiện "Ẩm ướt" vẫn ghi nhận một số lượng đáng kể tai nạn, cho thấy mặt đường trơn trượt vẫn là một rủi ro lớn. Ở hầu hết các tình trạng mặt đường, tai nạn tại khu vực Thành thị luôn chiếm ưu thế so với Nông thôn.
+    \item \textbf{Thời tiết và Ánh sáng}: Tổ hợp có số vụ tai nạn cao nhất (thể hiện bằng ô màu xanh đậm nhất) là "Nắng (không gió)" kết hợp với "Ban ngày" với gần 300 nghìn vụ. Điều này hợp lý bởi đây là thời điểm lưu lượng xe cộ lưu thông đông nhất. Tổ hợp rủi ro lớn thứ hai là "Nắng (không gió)" đi kèm với "Tối (có đèn)". Các điều kiện thời tiết khắc nghiệt (Mưa, Tuyết, Sương mù) có số vụ va chạm tuyệt đối thấp hơn do người dân hạn chế ra đường.
+    \item \textbf{Giới hạn tốc độ}: Đường có giới hạn tốc độ 30 mph (đặc trưng cho đường nội đô) ghi nhận số lượng tai nạn kỷ lục, vượt mốc 260 nghìn vụ. Đứng thứ hai là các cung đường giới hạn 20 mph (khoảng 80 nghìn vụ), và thứ ba là đường quốc lộ/ngoại ô giới hạn 60 mph. Điều này phản ánh thực tế rằng tai nạn dễ xảy ra hơn trong môi trường giao thông chằng chịt ở nội thành, dù tốc độ di chuyển không quá lớn.
+    \item \textbf{Loại đường và mức độ nghiêm trọng}: Đường đơn (Single carriageway) chứng kiến số lượng tai nạn áp đảo hoàn toàn so với các loại hình khác như Đường đôi hay Vòng xuyến. Không những thế, tỷ lệ các vụ tai nạn dẫn đến chấn thương Nghiêm trọng (Serious - màu vàng) và Tử vong (Fatal - màu đỏ) trên đường đơn cũng chiếm một diện tích lớn trên thân cột, báo động về mức độ nguy hiểm của loại hạ tầng thiếu dải phân cách này.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.88\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_road_type_stacked_bar.png}
-        \caption{Số vụ va chạm theo loại đường và mức độ nghiêm trọng}
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_surface_area.png}
+        \caption{Mặt đường và Khu vực}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_weather_light.png}
+        \caption{Thời tiết và Ánh sáng}
     \end{subfigure}
     
-    \vspace{0.25cm}
+    \vspace{0.3cm}
     
-    \begin{subfigure}{0.88\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_weather_light_matrix.png}
-        \caption{Tỷ lệ vụ nghiêm trọng hoặc tử vong theo thời tiết và ánh sáng}
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_speed_limit.png}
+        \caption{Va chạm theo giới hạn tốc độ}
     \end{subfigure}
-    \caption{Biểu đồ phân tích điều kiện đường sá và môi trường}
-    \label{fig:memberB}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_road_type.png}
+        \caption{Loại đường và mức độ}
+    \end{subfigure}
+    \caption{Các biểu đồ phân tích Điều kiện đường sá và môi trường}
+    \label{fig:memberB_charts}
 \end{figure}
 
 \subsection{Phương tiện và người lái}
 
-
 \textbf{Mục tiêu}: Phân tích đặc điểm phương tiện và người lái trong các vụ va chạm, từ đó nhận diện nhóm phương tiện hoặc nhóm người lái xuất hiện nhiều trong các vụ tai nạn nghiêm trọng.
 
-\textbf{Biểu đồ đề xuất}:
+\textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Bar chart: số phương tiện liên quan theo \texttt{vehicle\_type}.
-    \item Stacked column chart: mức độ nghiêm trọng theo nhóm tuổi người lái.
+    \item Biểu đồ cột ngang (Bar chart): Thể hiện số lượng phương tiện tham gia tai nạn phân theo loại phương tiện.
+    \item Biểu đồ trục kép (Dual Axis Line/Column Chart): Thể hiện tổng số phương tiện và số ca thương vong nặng theo nhóm tuổi người lái.
 \end{itemize}
 
-\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về loại phương tiện chiếm tỷ trọng cao và nhóm tuổi người lái cần chú ý.
+\textbf{Nhận xét rút ra từ dữ liệu}:
+\begin{itemize}
+    \item \textbf{Ô tô cá nhân là phương tiện phổ biến nhất}: Trong tất cả các vụ va chạm, xe ô tô (Car) chiếm số lượng áp đảo so với phần còn lại. Điều này phản ánh đúng cơ cấu phương tiện lưu thông trên đường.
+    \item \textbf{Xe máy và xe đạp tiềm ẩn rủi ro cao}: Mặc dù có tổng số vụ va chạm thấp hơn ô tô, nhưng khi xét về tỷ lệ thương vong nặng (Serious Casualties), nhóm phương tiện hai bánh này lại cho thấy rủi ro rất cao do người lái thiếu lớp vỏ bảo vệ.
+    \item \textbf{Nhóm tuổi trẻ dễ gặp tai nạn nhất}: Nhóm người lái xe ở độ tuổi thanh niên (16-25 tuổi và 26-35 tuổi) liên quan đến số lượng các vụ tai nạn cao nhất, nguyên nhân thường xuất phát từ sự thiếu kinh nghiệm hoặc điều khiển phương tiện với tốc độ cao.
+    \item \textbf{Rủi ro chấn thương nặng ở người cao tuổi}: Đối với nhóm người lái xe trên 65 tuổi, tổng số phương tiện liên quan giảm mạnh. Tuy nhiên, đường xu hướng thương vong nặng của nhóm này lại không giảm theo tỷ lệ tương ứng, cho thấy khi người lớn tuổi gặp tai nạn, hậu quả thường nghiêm trọng hơn do thể trạng yếu.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -95,16 +133,21 @@ Chương này trình bày sườn phân tích và các biểu đồ dự kiến 
 
 \subsection{Người thương vong và nhóm rủi ro}
 
-
 \textbf{Mục tiêu}: Phân tích đặc điểm người thương vong theo độ tuổi, giới tính, vai trò tham gia giao thông và mức độ thương vong để xác định các nhóm rủi ro cao.
 
-\textbf{Biểu đồ đề xuất}:
+\textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Stacked bar chart: số người thương vong theo \texttt{casualty\_severity} và nhóm tuổi.
-    \item Bar chart: số người thương vong theo vai trò tham gia giao thông.
+    \item Biểu đồ cột xếp chồng (Stacked Bar Chart): Thể hiện tổng số thương vong phân theo nhóm tuổi và mức độ nghiêm trọng (Tử vong, Nghiêm trọng, Nhẹ).
+    \item Biểu đồ cột 100\% xếp chồng (100\% Stacked Column Chart): So sánh tỷ lệ phần trăm các mức độ chấn thương dựa trên vai trò tham gia giao thông (Người lái, Hành khách, Người đi bộ).
 \end{itemize}
 
-\textbf{Nhận xét cần rút ra}: trình bày từ ba đến bốn nhận xét về nhóm tuổi hoặc vai trò có mức độ thương vong cao và nhóm đối tượng nên được ưu tiên trong khuyến nghị an toàn.
+\textbf{Nhận xét rút ra từ dữ liệu}:
+\begin{itemize}
+    \item \textbf{Thương vong phần lớn là chấn thương nhẹ}: Nhìn chung ở mọi độ tuổi, phần lớn các ca thương vong đều được ghi nhận ở mức độ Nhẹ (Slight). Hai nhóm tuổi 16-25 và 26-35 có tổng số người thương vong cao nhất.
+    \item \textbf{Người cao tuổi có tỷ lệ tử vong cao}: Mặc dù nhóm trên 65 tuổi có tổng số ca thương vong ít hơn nhóm thanh niên, tỷ lệ phần trăm mức độ Tử vong (Fatal) trong nhóm này lại lớn hơn một cách đáng kể.
+    \item \textbf{Người đi bộ chịu hậu quả thảm khốc nhất}: Biểu đồ 100\% Stacked Column thể hiện rõ sự tương phản giữa các vai trò. Trong khi Người lái xe và Hành khách chủ yếu bị thương nhẹ, thì Người đi bộ (Pedestrian) có tỷ lệ chấn thương Nghiêm trọng (Serious) và Tử vong (Fatal) cao vượt trội, do không có sự bảo vệ khi va chạm với các phương tiện cơ giới.
+    \item \textbf{Người lái xe chiếm phần đông nạn nhân}: Xét về mặt số lượng tuyệt đối, người điều khiển phương tiện luôn chiếm phần lớn trong số các nạn nhân, tiếp sau đó mới đến hành khách đi cùng.
+\end{itemize}
 
 \begin{figure}[H]
     \centering

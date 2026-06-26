@@ -25,11 +25,29 @@ Quá trình làm việc trên Power BI thường tuân theo một quy trình chu
 \end{itemize}
 
 \subsection{Minh họa chức năng bằng dữ liệu mẫu}
-Để làm quen với quy trình trên, nhóm đã thực hiện thử nghiệm trên một bộ dữ liệu đơn giản (ví dụ: danh sách bán hàng nội bộ của một cửa hàng nhỏ). Các bước thực hiện bao gồm:
+Để làm quen với quy trình trên, nhóm đã thực hiện thử nghiệm trên một bộ dữ liệu đơn giản (\href{https://drive.google.com/drive/folders/15G17ukMnO5SE3tEGr7q1lfL1cEJYrSk0?usp=drive_link}{bộ dữ liệu mẫu Financials tích hợp sẵn trong Power BI}). Các bước thực hiện bao gồm:
 \begin{enumerate}
-    \item Nạp file Excel dữ liệu bán hàng vào Power BI Desktop.
-    \item Dùng Power Query xóa các dòng trống và định dạng lại cột \texttt{Ngày bán} về kiểu \texttt{Date}.
-    \item Tạo một measure tính tổng doanh thu bằng DAX: \texttt{Total Sales = SUM(Sales[Amount])}.
+    \item Nạp bảng dữ liệu \texttt{financials} vào Power BI Desktop.
+    \item Dùng Power Query xóa các dòng trống và ép kiểu cột \texttt{Date} về định dạng \texttt{Date}.
+    \item Tạo một measure tính tổng doanh thu bằng DAX: \texttt{Total Sales = SUM(financials[Sales])}.
     \item Vẽ biểu đồ cột hiển thị doanh thu theo từng tháng và biểu đồ tròn thể hiện cơ cấu sản phẩm bán ra.
 \end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/sample_sales_by_month.png}
+        \caption{Biểu đồ cột (Doanh thu theo Tháng)}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/sample_sales_by_product.png}
+        \caption{Biểu đồ tròn (Cơ cấu theo Sản phẩm)}
+    \end{subfigure}
+    \caption{Minh họa các biểu đồ cơ bản trên dữ liệu mẫu Financials}
+    \label{fig:sample_viz}
+\end{figure}
+
 Kết quả thử nghiệm cho thấy Power BI có tốc độ xử lý nhanh, khả năng kéo thả trực quan và đồng bộ hóa bộ lọc tốt giữa các biểu đồ. Đây là tiền đề để nhóm áp dụng vào bộ dữ liệu chính của đồ án.
