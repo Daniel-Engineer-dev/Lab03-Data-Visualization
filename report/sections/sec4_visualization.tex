@@ -36,9 +36,9 @@ Chương này trình bày chi tiết các biểu đồ phân tích và diễn gi
         \includegraphics[width=\textwidth, keepaspectratio]{images/memberA_heatmap.png}
         \caption{Mật độ va chạm theo Thứ và Giờ}
     \end{subfigure}
-    
+
     \vspace{0.3cm}
-    
+
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth, keepaspectratio]{images/memberA_month.png}
@@ -88,9 +88,9 @@ Chương này trình bày chi tiết các biểu đồ phân tích và diễn gi
         \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_weather_light.png}
         \caption{Thời tiết và Ánh sáng}
     \end{subfigure}
-    
+
     \vspace{0.3cm}
-    
+
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth, keepaspectratio]{images/memberB_speed_limit.png}
@@ -112,23 +112,49 @@ Chương này trình bày chi tiết các biểu đồ phân tích và diễn gi
 
 \textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Biểu đồ cột ngang (Bar chart): Thể hiện số lượng phương tiện tham gia tai nạn phân theo loại phương tiện.
-    \item Biểu đồ trục kép (Dual Axis Line/Column Chart): Thể hiện tổng số phương tiện và số ca thương vong nặng theo nhóm tuổi người lái.
+    \item Biểu đồ cột ngang (Bar chart): Thể hiện Top 10 loại phương tiện xuất hiện nhiều nhất trong các vụ va chạm.
+    \item Biểu đồ vòng (Donut chart): Thể hiện tỷ lệ phương tiện tham gia va chạm theo khu vực Thành thị/Nông thôn.
+    \item Biểu đồ cột xếp chồng (Stacked Column Chart): So sánh số phương tiện theo nhóm tuổi và giới tính người lái.
+    \item Biểu đồ kết hợp cột và đường (Combo Chart): Đối chiếu số lượng phương tiện với số ca thương vong nặng theo nhóm tuổi.
 \end{itemize}
 
 \textbf{Nhận xét rút ra từ dữ liệu}:
 \begin{itemize}
-    \item \textbf{Ô tô cá nhân là phương tiện phổ biến nhất}: Trong tất cả các vụ va chạm, xe ô tô (Car) chiếm số lượng áp đảo so với phần còn lại. Điều này phản ánh đúng cơ cấu phương tiện lưu thông trên đường.
-    \item \textbf{Xe máy và xe đạp tiềm ẩn rủi ro cao}: Mặc dù có tổng số vụ va chạm thấp hơn ô tô, nhưng khi xét về tỷ lệ thương vong nặng (Serious Casualties), nhóm phương tiện hai bánh này lại cho thấy rủi ro rất cao do người lái thiếu lớp vỏ bảo vệ.
-    \item \textbf{Nhóm tuổi trẻ dễ gặp tai nạn nhất}: Nhóm người lái xe ở độ tuổi thanh niên (16-25 tuổi và 26-35 tuổi) liên quan đến số lượng các vụ tai nạn cao nhất, nguyên nhân thường xuất phát từ sự thiếu kinh nghiệm hoặc điều khiển phương tiện với tốc độ cao.
-    \item \textbf{Rủi ro chấn thương nặng ở người cao tuổi}: Đối với nhóm người lái xe trên 65 tuổi, tổng số phương tiện liên quan giảm mạnh. Tuy nhiên, đường xu hướng thương vong nặng của nhóm này lại không giảm theo tỷ lệ tương ứng, cho thấy khi người lớn tuổi gặp tai nạn, hậu quả thường nghiêm trọng hơn do thể trạng yếu.
+    \item \textbf{Ô tô chiếm ưu thế rất rõ}: Trong Top 10 loại phương tiện, nhóm Car vượt xa toàn bộ các nhóm còn lại. Các nhóm đứng sau như xe đạp, xe tải nhẹ và xe máy có số lượng thấp hơn nhiều, vì vậy khi đọc biểu đồ cần xem ô tô như nhóm nền chính của bức tranh va chạm.
+    \item \textbf{Va chạm tập trung nhiều hơn ở Thành thị}: Biểu đồ vòng cho thấy khu vực Thành thị chiếm khoảng hai phần ba tổng số phương tiện liên quan đến va chạm, trong khi Nông thôn chiếm khoảng một phần ba. Chênh lệch này khá dễ hiểu nếu nhìn từ mật độ phương tiện và tần suất di chuyển trong khu vực đô thị.
+    \item \textbf{Nhóm 26--35 tuổi nổi bật nhất}: Ở biểu đồ tuổi và giới tính, nhóm 26--35 có số phương tiện cao nhất, sau đó giảm dần qua các nhóm 36--45 và 46--55. Đây là nhóm tuổi tham gia giao thông thường xuyên, nên biểu đồ cho thấy họ xuất hiện nhiều trong các vụ va chạm hơn các nhóm quá trẻ hoặc cao tuổi.
+    \item \textbf{Nam giới luôn cao hơn nữ giới ở hầu hết nhóm tuổi}: Các cột màu xanh của nam giới cao hơn rõ so với cột màu hồng ở gần như toàn bộ các nhóm tuổi. Đường thương vong nặng trong biểu đồ kết hợp cũng đạt đỉnh ở nhóm 26--35, rồi giảm dần ở các nhóm tuổi lớn hơn, khá tương đồng với xu hướng số phương tiện.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberC_charts.png}
-    \caption{Biểu đồ phân tích phương tiện và người lái}
-    \label{fig:memberC}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberC_vehicle_type_top10.png}
+        \caption{Top 10 loại phương tiện}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberC_urban_rural_ratio.png}
+        \caption{Tỷ lệ phương tiện theo khu vực}
+    \end{subfigure}
+
+    \vspace{0.3cm}
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberC_driver_age_gender.png}
+        \caption{Nhóm tuổi và giới tính người lái}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberC_age_severe_casualties.png}
+        \caption{Phương tiện và thương vong nặng theo tuổi}
+    \end{subfigure}
+    \caption{Các biểu đồ phân tích Phương tiện và người lái}
+    \label{fig:memberC_charts}
 \end{figure}
 
 \subsection{Người thương vong và nhóm rủi ro}
@@ -137,23 +163,50 @@ Chương này trình bày chi tiết các biểu đồ phân tích và diễn gi
 
 \textbf{Biểu đồ thực tế}:
 \begin{itemize}
-    \item Biểu đồ cột xếp chồng (Stacked Bar Chart): Thể hiện tổng số thương vong phân theo nhóm tuổi và mức độ nghiêm trọng (Tử vong, Nghiêm trọng, Nhẹ).
-    \item Biểu đồ cột 100\% xếp chồng (100\% Stacked Column Chart): So sánh tỷ lệ phần trăm các mức độ chấn thương dựa trên vai trò tham gia giao thông (Người lái, Hành khách, Người đi bộ).
+    \item Biểu đồ cột ngang (Bar chart): So sánh số người thương vong theo vai trò tham gia giao thông.
+    \item Biểu đồ cột xếp chồng (Stacked Bar Chart): Thể hiện số người thương vong theo nhóm tuổi và mức độ nghiêm trọng.
+    \item Biểu đồ cột nhóm (Clustered Column Chart): So sánh số người thương vong theo nhóm tuổi và giới tính.
+    \item Biểu đồ cột 100\% xếp chồng (100\% Stacked Column Chart): So sánh tỷ lệ mức độ thương vong theo vai trò tham gia giao thông.
 \end{itemize}
 
 \textbf{Nhận xét rút ra từ dữ liệu}:
 \begin{itemize}
-    \item \textbf{Thương vong phần lớn là chấn thương nhẹ}: Nhìn chung ở mọi độ tuổi, phần lớn các ca thương vong đều được ghi nhận ở mức độ Nhẹ (Slight). Hai nhóm tuổi 16-25 và 26-35 có tổng số người thương vong cao nhất.
-    \item \textbf{Người cao tuổi có tỷ lệ tử vong cao}: Mặc dù nhóm trên 65 tuổi có tổng số ca thương vong ít hơn nhóm thanh niên, tỷ lệ phần trăm mức độ Tử vong (Fatal) trong nhóm này lại lớn hơn một cách đáng kể.
-    \item \textbf{Người đi bộ chịu hậu quả thảm khốc nhất}: Biểu đồ 100\% Stacked Column thể hiện rõ sự tương phản giữa các vai trò. Trong khi Người lái xe và Hành khách chủ yếu bị thương nhẹ, thì Người đi bộ (Pedestrian) có tỷ lệ chấn thương Nghiêm trọng (Serious) và Tử vong (Fatal) cao vượt trội, do không có sự bảo vệ khi va chạm với các phương tiện cơ giới.
-    \item \textbf{Người lái xe chiếm phần đông nạn nhân}: Xét về mặt số lượng tuyệt đối, người điều khiển phương tiện luôn chiếm phần lớn trong số các nạn nhân, tiếp sau đó mới đến hành khách đi cùng.
+    \item \textbf{Người điều khiển phương tiện chiếm nhiều nhất về số lượng}: Biểu đồ theo vai trò cho thấy nhóm Người điều khiển có số người thương vong lớn hơn hẳn Hành khách và Người đi bộ. Đây là nhóm trực tiếp tham gia điều khiển phương tiện, nên cũng là nhóm xuất hiện dày nhất trong thống kê thương vong.
+    \item \textbf{Nhóm tuổi 26--35 là nhóm nổi bật nhất}: Khi phân theo tuổi và mức độ, nhóm 26--35 có tổng số thương vong cao nhất. Các nhóm 36--45 và 46--55 cũng còn ở mức cao, trong khi trẻ em và nhóm trên 66 tuổi thấp hơn rõ rệt về số lượng tuyệt đối.
+    \item \textbf{Thương vong nhẹ vẫn chiếm phần lớn}: Ở hầu hết nhóm tuổi, phần màu xanh của mức độ Nhẹ là phần dài nhất trên thanh. Tuy vậy, phần Nghiêm trọng và Tử vong vẫn xuất hiện đều ở các nhóm tuổi trưởng thành, nên không thể chỉ nhìn tổng số cao mà bỏ qua mức độ hậu quả.
+    \item \textbf{Người đi bộ có tỷ lệ hậu quả nặng đáng chú ý}: Nếu xét theo tỷ lệ, Người đi bộ có phần Nghiêm trọng và Tử vong lớn hơn hai nhóm còn lại. Nói cách khác, Người điều khiển là nhóm đông nhất về số lượng thương vong, nhưng Người đi bộ lại là nhóm cần chú ý nhiều hơn khi đánh giá mức độ nghiêm trọng.
+    \item \textbf{Nam giới cao hơn nữ giới ở hầu hết nhóm tuổi}: Biểu đồ giới tính cho thấy cột Nam luôn cao hơn cột Nữ, đặc biệt rõ ở các nhóm tuổi 26--35, 36--45 và 46--55. Ở các nhóm tuổi cao hơn, khoảng cách này thu hẹp lại nhưng vẫn giữ cùng chiều hướng.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth, keepaspectratio]{images/memberD_charts.png}
-    \caption{Biểu đồ phân tích người thương vong và nhóm rủi ro}
-    \label{fig:memberD}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberD_casualties_by_role.png}
+        \caption{Thương vong theo vai trò}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberD_age_severity.png}
+        \caption{Nhóm tuổi và mức độ thương vong}
+    \end{subfigure}
+
+    \vspace{0.3cm}
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberD_age_gender.png}
+        \caption{Nhóm tuổi và giới tính}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/memberD_role_severity_ratio.png}
+        \caption{Tỷ lệ mức độ theo vai trò}
+    \end{subfigure}
+    \caption{Các biểu đồ phân tích Người thương vong và nhóm rủi ro}
+    \label{fig:memberD_charts}
 \end{figure}
 
 \subsection{Giao diện dashboard tổng hợp}
