@@ -211,17 +211,62 @@ Chương này trình bày chi tiết các biểu đồ phân tích và diễn gi
 
 \subsection{Giao diện dashboard tổng hợp}
 
-Sau khi hoàn thành các biểu đồ theo từng mục tiêu, nhóm tổng hợp chúng vào một dashboard chính trong Power BI. Dashboard nên ưu tiên bố cục gọn trên một trang: hàng đầu là các KPI tổng quan; các khu vực còn lại lần lượt trình bày tám biểu đồ chính của bốn mục tiêu.
+Sau khi hoàn thành các biểu đồ thành phần, nhóm đã tổng hợp và xây dựng một hệ thống dashboard tương tác gồm 5 trang báo cáo chuyên sâu trong Power BI. Hệ thống dashboard được thiết kế nhất quán với thanh điều hướng (navigation bar) ở bên trái, hàng thẻ KPI tổng hợp ở trên cùng, các bộ lọc (slicers) Dropdown ở góc trên bên phải và lưới biểu đồ chi tiết ở trung tâm.
+
+Dưới đây là chi tiết giao diện thực tế của 5 trang báo cáo đã được hoàn thiện:
 
 \begin{figure}[H]
     \centering
-    % Nhóm chụp ảnh dashboard tổng hợp thực tế trong Power BI và lưu đè lên file này.
-    \IfFileExists{images/dashboard_overview.png}{
-        \includegraphics[width=0.95\textwidth, keepaspectratio]{images/dashboard_overview.png}
-    }{
-        \fbox{\parbox[c][7cm][c]{0.9\textwidth}{\centering
-        Vị trí chèn ảnh dashboard tổng hợp thực tế từ Power BI}}
-    }
-    \caption{Giao diện dashboard tổng hợp của nhóm}
-    \label{fig:dashboard_overview}
+    \includegraphics[width=0.75\textwidth, keepaspectratio]{images/dashboard_page1.png}
+    \caption{Tổng quan hồ sơ tai nạn}
+    \label{fig:dashboard_page1}
 \end{figure}
+
+\textbf{Tổng quan hồ sơ tai nạn} (Hình~\ref{fig:dashboard_page1}) cung cấp cái nhìn toàn cảnh về quy mô dữ liệu với 4 thẻ KPI chính: tổng số vụ va chạm (503K), tổng số thương vong (641K), tổng số phương tiện liên quan (921K) và số người tử vong (8K). Đồng thời tích hợp các biểu đồ quan trọng nhất từ các mục tiêu để người quản trị có góc nhìn bao quát tức thì.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/dashboard_page2.png}
+        \caption{Xu hướng thời gian}
+        \label{fig:dashboard_page2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/dashboard_page3.png}
+        \caption{Điều kiện đường sá và môi trường}
+        \label{fig:dashboard_page3}
+    \end{subfigure}
+    \caption{Giao diện trang Xu hướng thời gian và Điều kiện đường sá}
+    \label{fig:dashboard_group1}
+\end{figure}
+
+\textbf{Phân tích xu hướng tai nạn theo thời gian} (Hình~\ref{fig:dashboard_page2}) tập trung vào làm rõ các mốc thời gian xảy ra tai nạn. Các thẻ KPI làm nổi bật các đỉnh điểm rủi ro: năm cao điểm (2022), tháng rủi ro (tháng 10), ngày nguy hiểm nhất trong tuần (thứ 6) và giờ cao điểm va chạm (17:00).
+
+\textbf{Ảnh hưởng của điều kiện đường sá và môi trường} (Hình~\ref{fig:dashboard_page3}) phân tích các yếu tố hạ tầng và ngoại cảnh. Thẻ KPI thể hiện các điều kiện ghi nhận số tai nạn lớn nhất: loại đường đơn rủi ro nhất (Single carriageway), thời tiết nắng ấm (Fine no high winds), giới hạn tốc độ nội đô (30 mph) và tình trạng mặt đường khô ráo (Dry).
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/dashboard_page4.png}
+        \caption{Phương tiện và người điều khiển}
+        \label{fig:dashboard_page4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{images/dashboard_page5.png}
+        \caption{Người thương vong và nhóm rủi ro}
+        \label{fig:dashboard_page5}
+    \end{subfigure}
+    \caption{Giao diện trang Phương tiện \& người điều khiển và Người thương vong}
+    \label{fig:dashboard_group2}
+\end{figure}
+
+\textbf{Đặc điểm phương tiện và người điều khiển} (Hình~\ref{fig:dashboard_page4}) phân tích các khía cạnh liên quan tới phương tiện và tài xế. Thẻ KPI tổng hợp cho thấy loại phương tiện phổ biến nhất là Ô tô (Car), giới tính tài xế gặp nạn nhiều nhất là Nam, độ tuổi tài xế phổ biến nhất là từ 26--35 tuổi, và khu vực đô thị (Thành thị) chiếm tỷ trọng vượt trội (67%).
+
+\textbf{Chi tiết về người thương vong và nhóm rủi ro} (Hình~\ref{fig:dashboard_page5}) tập trung sâu vào nạn nhân của các vụ tai nạn. Thẻ KPI thể hiện giới tính nạn nhân phổ biến là Nam, nhóm tuổi nạn nhân gặp rủi ro cao nhất là 26--35 tuổi, và vai trò của người thương vong phổ biến nhất là Người điều khiển phương tiện (Driver or rider). Cổng slicer cho phép lọc động theo giới tính và năm để phục vụ phân tích drill-down.
+

@@ -22,7 +22,9 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
     "fontSize": 16,
     "offset": 10
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "calculate": "datum.road_type_label == 'Dual carriageway' ? 'Đường đôi' : datum.road_type_label == 'One way street' ? 'Đường 1 chiều' : datum.road_type_label == 'Roundabout' ? 'Vòng xuyến' : datum.road_type_label == 'Single carriageway' ? 'Đường đơn' : datum.road_type_label == 'Slip road' ? 'Đường nhánh' : 'Không rõ'",
@@ -36,20 +38,37 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
   "params": [
     {
       "name": "hover",
-      "select": {"type": "point", "on": "pointerover"}
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
     }
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 2},
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 2
+  },
   "encoding": {
     "opacity": {
-      "condition": {"param": "hover", "value": 1},
-      "value": 0.4
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
     },
     "x": {
       "field": "LoaiDuong_VN",
       "type": "nominal",
       "title": "Loại đường",
-      "axis": {"labelAngle": -45}
+      "axis": {
+        "labelAngle": -45
+      }
     },
     "y": {
       "field": "Total Collisions",
@@ -61,15 +80,36 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
       "type": "nominal",
       "title": "Mức độ",
       "scale": {
-        "domain": ["Tử vong", "Nghiêm trọng", "Nhẹ"],
-        "range": ["#EF4444", "#FBBF24", "#34D399"]
+        "domain": [
+          "Tử vong",
+          "Nghiêm trọng",
+          "Nhẹ"
+        ],
+        "range": [
+          "#EF4444",
+          "#FBBF24",
+          "#34D399"
+        ]
       }
     },
     "tooltip": [
-      {"field": "LoaiDuong_VN", "title": "Loại đường"},
-      {"field": "MucDo_VN", "title": "Mức độ"},
-      {"field": "Total Collisions", "title": "Số vụ va chạm", "format": ","}
+      {
+        "field": "LoaiDuong_VN",
+        "title": "Loại đường"
+      },
+      {
+        "field": "MucDo_VN",
+        "title": "Mức độ"
+      },
+      {
+        "field": "Total Collisions",
+        "title": "Số vụ va chạm",
+        "format": ","
+      }
     ]
+  },
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```
@@ -93,7 +133,9 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
     "fontSize": 16,
     "offset": 10
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "calculate": "datum.weather_conditions_label == 'Fine no high winds' ? 'Nắng (không gió)' : datum.weather_conditions_label == 'Raining no high winds' ? 'Mưa (không gió)' : datum.weather_conditions_label == 'Snowing no high winds' ? 'Tuyết (không gió)' : datum.weather_conditions_label == 'Fine + high winds' ? 'Nắng + Gió lớn' : datum.weather_conditions_label == 'Raining + high winds' ? 'Mưa + Gió lớn' : datum.weather_conditions_label == 'Snowing + high winds' ? 'Tuyết + Gió lớn' : datum.weather_conditions_label == 'Fog or mist' ? 'Sương mù' : datum.weather_conditions_label == 'Other' ? 'Khác' : 'Không rõ'",
@@ -107,14 +149,26 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
   "params": [
     {
       "name": "hover",
-      "select": {"type": "point", "on": "pointerover"}
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
     }
   ],
   "mark": "rect",
   "encoding": {
     "opacity": {
-      "condition": {"param": "hover", "value": 1},
-      "value": 0.4
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
     },
     "y": {
       "field": "ThoiTiet_VN",
@@ -125,19 +179,37 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
       "field": "AnhSang_VN",
       "type": "nominal",
       "title": "Điều kiện ánh sáng",
-      "axis": {"labelAngle": -45}
+      "axis": {
+        "labelAngle": -45
+      }
     },
     "color": {
       "field": "Total Collisions",
       "type": "quantitative",
       "title": "Số vụ va chạm",
-      "scale": {"type": "sqrt", "scheme": "greens"}
+      "scale": {
+        "type": "sqrt",
+        "scheme": "greens"
+      }
     },
     "tooltip": [
-      {"field": "ThoiTiet_VN", "title": "Thời tiết"},
-      {"field": "AnhSang_VN", "title": "Ánh sáng"},
-      {"field": "Total Collisions", "title": "Số vụ", "format": ","}
+      {
+        "field": "ThoiTiet_VN",
+        "title": "Thời tiết"
+      },
+      {
+        "field": "AnhSang_VN",
+        "title": "Ánh sáng"
+      },
+      {
+        "field": "Total Collisions",
+        "title": "Số vụ",
+        "format": ","
+      }
     ]
+  },
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```
@@ -158,7 +230,9 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
     "fontSize": 16,
     "offset": 10
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "calculate": "datum.speed_limit == -1 || datum.speed_limit == 'Unknown' ? 'Không rõ' : datum.speed_limit",
@@ -168,7 +242,16 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
   "params": [
     {
       "name": "hover",
-      "select": {"type": "point", "on": "pointerover"}
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
     }
   ],
   "mark": {
@@ -178,14 +261,19 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
   },
   "encoding": {
     "opacity": {
-      "condition": {"param": "hover", "value": 1},
-      "value": 0.4
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
     },
     "x": {
       "field": "TocDo_VN",
       "type": "ordinal",
       "title": "Giới hạn tốc độ (mph)",
-      "axis": {"labelAngle": 0}
+      "axis": {
+        "labelAngle": 0
+      }
     },
     "y": {
       "field": "Total Collisions",
@@ -193,9 +281,19 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
       "title": "Tổng số vụ va chạm"
     },
     "tooltip": [
-      {"field": "TocDo_VN", "title": "Tốc độ giới hạn (mph)"},
-      {"field": "Total Collisions", "title": "Số vụ", "format": ","}
+      {
+        "field": "TocDo_VN",
+        "title": "Tốc độ giới hạn (mph)"
+      },
+      {
+        "field": "Total Collisions",
+        "title": "Số vụ",
+        "format": ","
+      }
     ]
+  },
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```
@@ -219,7 +317,9 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
     "fontSize": 16,
     "offset": 10
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "calculate": "datum.road_surface_conditions_label == 'Dry' ? 'Khô ráo' : datum.road_surface_conditions_label == 'Wet or damp' ? 'Ẩm ướt' : datum.road_surface_conditions_label == 'Snow' ? 'Tuyết' : datum.road_surface_conditions_label == 'Frost or ice' ? 'Băng giá' : datum.road_surface_conditions_label == 'Flood over 3cm. deep' ? 'Ngập lụt' : datum.road_surface_conditions_label == 'Oil or diesel' ? 'Dầu mỡ' : datum.road_surface_conditions_label == 'Mud' ? 'Bùn đất' : 'Khác'",
@@ -233,20 +333,37 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
   "params": [
     {
       "name": "hover",
-      "select": {"type": "point", "on": "pointerover"}
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
     }
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 2},
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 2
+  },
   "encoding": {
     "opacity": {
-      "condition": {"param": "hover", "value": 1},
-      "value": 0.4
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
     },
     "x": {
       "field": "MatDuong_VN",
       "type": "nominal",
       "title": "Tình trạng mặt đường",
-      "axis": {"labelAngle": 0}
+      "axis": {
+        "labelAngle": 0
+      }
     },
     "y": {
       "field": "Total Collisions",
@@ -261,15 +378,34 @@ Màu sắc chủ đạo: **Emerald (`#34D399`)**
       "type": "nominal",
       "title": "Khu vực",
       "scale": {
-        "domain": ["Thành thị", "Nông thôn"],
-        "range": ["#34D399", "#059669"]
+        "domain": [
+          "Thành thị",
+          "Nông thôn"
+        ],
+        "range": [
+          "#34D399",
+          "#059669"
+        ]
       }
     },
     "tooltip": [
-      {"field": "MatDuong_VN", "title": "Mặt đường"},
-      {"field": "KhuVuc_VN", "title": "Khu vực"},
-      {"field": "Total Collisions", "title": "Số vụ", "format": ","}
+      {
+        "field": "MatDuong_VN",
+        "title": "Mặt đường"
+      },
+      {
+        "field": "KhuVuc_VN",
+        "title": "Khu vực"
+      },
+      {
+        "field": "Total Collisions",
+        "title": "Số vụ",
+        "format": ","
+      }
     ]
+  },
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```

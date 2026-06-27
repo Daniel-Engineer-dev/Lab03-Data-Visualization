@@ -1,13 +1,43 @@
 \section{Nhận xét và Kết luận}
 \label{sec:conclusion}
 
-Phần này dùng để tổng hợp toàn bộ các kết quả phân tích dữ liệu từ Dashboard, đề xuất các khuyến nghị mang tính thực tiễn và liệt kê danh mục tài liệu tham khảo.
+Phần này tổng hợp toàn bộ các kết quả phân tích dữ liệu từ hệ thống Dashboard đã xây dựng, từ đó rút ra các phát hiện quan trọng (Insights) và đề xuất các khuyến nghị mang tính thực tiễn nhằm nâng cao an toàn giao thông.
 
 \subsection{Tổng hợp các phát hiện quan trọng (Insights)}
-\textit{[Hướng dẫn điền: Nhóm tự tổng hợp từ 3 đến 5 phát hiện nổi bật nhất thu được từ hệ thống Dashboard. Các insights này cần là sự kết hợp thông tin giữa các chương phân tích trước đó của các thành viên (ví dụ: xu hướng thời gian kết hợp với phân loại đối tượng để thấy danh mục nào đang đi xuống, hoặc tương quan hiệu suất kết hợp với phân khúc chủ thể...)].}
+
+Qua việc phân tích và kết hợp thông tin từ nhiều góc nhìn trên Dashboard, nhóm đã rút ra 4 phát hiện quan trọng sau:
+
+\begin{enumerate}
+    \item \textbf{Đỉnh điểm rủi ro theo khung giờ và loại phương tiện (Thời gian + Phương tiện):} 
+    Tai nạn giao thông có xu hướng tập trung cực kỳ cao vào các ngày làm việc trong tuần (Thứ 2 đến Thứ 6, đạt đỉnh vào Thứ 6) và đặc biệt rơi vào khung giờ tan tầm buổi chiều từ 15h00 đến 18h00 (đạt cực đại tại dải 16h00 -- 17h00). Khi đối chiếu với dữ liệu phương tiện, Ô tô (Car) chiếm số lượng áp đảo tuyệt đối với hơn 628 nghìn xe liên quan đến va chạm. Điều này chỉ ra rằng sự quá tải giao thông của phương tiện cá nhân (ô tô) vào giờ tan tầm tại các khu vực đông đúc là tác nhân hàng đầu dẫn đến va chạm.
+    
+    \item \textbf{Sự tương phản về rủi ro giữa Khu vực và Mức độ nghiêm trọng (Hạ tầng + Địa lý + Mức độ):}
+    Khu vực Thành thị (Urban) chiếm tới 67\% số lượng phương tiện gặp nạn và có số vụ va chạm cao vượt trội so với Nông thôn. Tuy nhiên, các tuyến đường quốc lộ hoặc đường đơn ngoài đô thị tại khu vực Nông thôn (với giới hạn tốc độ cao 60 mph) lại ghi nhận tỷ lệ tai nạn dẫn đến chấn thương Nghiêm trọng (Serious) hoặc Tử vong (Fatal) cao hơn nhiều so với khu vực đô thị (với giới hạn tốc độ thấp 20--30 mph). Điều này khẳng định yếu tố tốc độ di chuyển cao ở nông thôn làm tăng nghiêm trọng hậu quả va chạm khi xảy ra, dù tần suất va chạm thấp hơn.
+    
+    \item \textbf{Độ tuổi lao động trẻ và sự lệch pha giới tính (Tài xế + Thương vong):}
+    Nhóm đối tượng ở độ tuổi từ 26--35 tuổi nổi lên là nhóm rủi ro cao nhất trên cả hai khía cạnh: số lượng tài xế gây tai nạn và số lượng người bị thương vong. Đặc biệt, giới tính Nam giới chiếm tỷ lệ áp đảo hoàn toàn so với Nữ giới ở mọi nhóm tuổi (chiếm khoảng 392 nghìn ca thương vong trong tổng số 640 nghìn ca). Đây là nhóm dân số tham gia giao thông tích cực nhất nhưng cũng có xu hướng hành vi lái xe tiềm ẩn nhiều rủi ro nhất.
+    
+    \item \textbf{Mức độ tổn thương cao của các nhóm tham gia giao thông yếu thế (Vai trò + Mức độ):}
+    Mặc dù nhóm Người điều khiển phương tiện (Driver or rider) chiếm số lượng thương vong tuyệt đối lớn nhất (hơn 400 nghìn ca), nhưng khi phân tích tỷ lệ phần trăm mức độ chấn thương (biểu đồ 100\% xếp chồng), nhóm \textbf{Người đi bộ} (Pedestrian) và \textbf{Hành khách} (Passenger) lại có tỷ lệ chấn thương Nghiêm trọng (Serious) và Tử vong (Fatal) cao hơn hẳn. Người đi bộ là đối tượng dễ bị tổn thương nhất do không có bất kỳ trang bị bảo vệ trực tiếp nào khi xảy ra va chạm.
+\end{enumerate}
 
 \subsection{Đề xuất khuyến nghị}
-\textit{[Hướng dẫn điền: Dựa trên các phát hiện ở trên, đề xuất từ 3 đến 4 hành động thực tế có thể triển khai ngay. Các đề xuất này phải xuất phát trực tiếp từ các con số hoặc xu hướng thực tế trong biểu đồ, tránh đưa ra các khuyến nghị mang tính chung chung không có căn cứ từ dữ liệu].}
+
+Dựa trên các con số và xu hướng thực tế rút ra từ dữ liệu, nhóm đề xuất 4 khuyến nghị thực tiễn sau:
+
+\begin{enumerate}
+    \item \textbf{Kiểm soát tốc độ và nâng cấp hạ tầng trên các tuyến đường đơn (Single Carriageway):}
+    Vì đường đơn nội đô (giới hạn 30 mph) là nơi xảy ra nhiều va chạm nhất, cần tăng cường các hệ thống camera phạt nguội tự động để kiểm soát tốc độ hành trình. Đối với các tuyến đường đơn nông thôn (giới hạn 60 mph), cần bổ sung dải phân cách cứng phân chia làn đường hoặc thiết lập các gờ giảm tốc tại các khúc cua nguy hiểm để ngăn ngừa tai nạn đối đầu ở tốc độ cao.
+    
+    \item \textbf{Tăng cường tuần tra, điều tiết giao thông vào khung giờ cao điểm tan tầm chiều:}
+    Lực lượng Cảnh sát giao thông cần chủ động bố trí quân số điều tiết và phân luồng giao thông vào khung giờ từ 15h00 đến 18h00 (đặc biệt là chiều Thứ 6) tại các nút giao trọng điểm trong đô thị. Đồng thời, tích hợp cảnh báo mật độ tai nạn theo thời gian thực lên các bảng điện tử (LED) hoặc ứng dụng chỉ đường để người dân hạn chế di chuyển qua các điểm nóng.
+    
+    \item \textbf{Xây dựng chiến dịch tuyên truyền hướng mục tiêu vào nhóm nam giới trẻ tuổi:}
+    Cần thiết kế các chiến dịch truyền thông an toàn giao thông nhắm trực tiếp vào đối tượng nam giới độ tuổi từ 26--35 tuổi thông qua mạng xã hội, các hội nhóm ô tô/xe máy, và các cơ quan doanh nghiệp. Nội dung tuyên truyền tập trung vào tác hại của việc phóng nhanh vượt ẩu, không giữ khoảng cách an toàn và lái xe sau khi sử dụng rượu bia.
+    
+    \item \textbf{Nâng cấp hạ tầng bảo vệ người đi bộ tại khu vực đô thị:}
+    Tại khu vực đô thị (chiếm 67\% số vụ va chạm), cần ưu tiên nâng cấp hạ tầng cho người đi bộ: sơn vạch kẻ đường rõ nét, lắp đặt đèn tín hiệu bấm nút ưu tiên qua đường cho người đi bộ tại các nút giao không có cảnh sát điều khiển, xây dựng thêm cầu vượt đi bộ quanh các trường học, bệnh viện, và áp dụng nghiêm ngặt giới hạn tốc độ thấp (20 mph) ở các khu vực đông người đi bộ.
+\end{enumerate}
 
 \subsection{Kết luận đồ án}
 Qua quá trình thực hiện đồ án, nhóm đã xây dựng được một quy trình phân tích tương đối đầy đủ cho bộ dữ liệu tai nạn giao thông đường bộ STATS19, từ bước tìm hiểu dữ liệu, xử lý trong Power Query, thiết kế mô hình dữ liệu cho đến trực quan hóa và trình bày kết quả bằng Power BI. Thay vì chỉ dừng ở việc vẽ biểu đồ riêng lẻ, nhóm cố gắng tổ chức các biểu đồ theo bốn góc nhìn có liên hệ với nhau: thời gian, điều kiện xảy ra tai nạn, phương tiện/người lái và đặc điểm người thương vong.
@@ -24,6 +54,7 @@ Về mặt kỹ thuật, đồ án giúp nhóm củng cố một số năng lự
 
 Điểm cần lưu ý là các biểu đồ trong báo cáo chủ yếu giúp nhìn rõ bức tranh chung của dữ liệu: tai nạn thường xuất hiện ở đâu, vào thời điểm nào và nhóm người nào bị ảnh hưởng nhiều hơn. Những kết quả này chưa đủ để khẳng định một yếu tố cụ thể là nguyên nhân trực tiếp gây ra tai nạn, vì còn nhiều thông tin khác chưa được đưa vào phân tích như lưu lượng xe thực tế, mật độ dân cư, đặc điểm từng tuyến đường hoặc thời gian di chuyển của người tham gia giao thông. Nếu tiếp tục phát triển, nhóm có thể bổ sung bản đồ theo khu vực, so sánh giữa các địa phương và xây dựng thêm các chỉ số theo tỷ lệ để đánh giá rủi ro chính xác hơn, thay vì chỉ nhìn vào số lượng tuyệt đối.
 
+\newpage
 \section{Tài liệu tham khảo}
 \label{sec:references}
 

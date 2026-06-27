@@ -50,7 +50,9 @@ Các biểu đồ dưới đây đã được chỉnh để:
 
 ```json
 {
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "title": {
     "text": "Số người thương vong theo nhóm tuổi và mức độ",
     "anchor": "middle",
@@ -60,7 +62,7 @@ Các biểu đồ dưới đây đã được chỉnh để:
   },
   "transform": [
     {
-      "filter": "datum.age_band_of_casualty_label != 'Data missing or out of range' && datum.age_band_of_casualty_label != null"
+      "filter": "datum.age_band_of_casualty != -1 && datum.age_band_of_casualty != null"
     },
     {
       "calculate": "datum.casualty_severity_label == 'Fatal' ? 'Tử vong' : datum.casualty_severity_label == 'Serious' ? 'Nghiêm trọng' : datum.casualty_severity_label == 'Slight' ? 'Nhẹ' : datum.casualty_severity_label",
@@ -71,33 +73,52 @@ Các biểu đồ dưới đây đã được chỉnh để:
       "as": "severity_order"
     },
     {
-      "calculate": "datum.age_band_of_casualty_label == '0 - 5' ? 1 : datum.age_band_of_casualty_label == '6 - 10' ? 2 : datum.age_band_of_casualty_label == '11 - 15' ? 3 : datum.age_band_of_casualty_label == '16 - 20' ? 4 : datum.age_band_of_casualty_label == '21 - 25' ? 5 : datum.age_band_of_casualty_label == '26 - 35' ? 6 : datum.age_band_of_casualty_label == '36 - 45' ? 7 : datum.age_band_of_casualty_label == '46 - 55' ? 8 : datum.age_band_of_casualty_label == '56 - 65' ? 9 : datum.age_band_of_casualty_label == '66 - 75' ? 10 : datum.age_band_of_casualty_label == 'Over 75' ? 11 : 99",
-      "as": "age_order"
+      "calculate": "datum.age_band_of_casualty == 1 ? '0 - 5' : datum.age_band_of_casualty == 2 ? '6 - 10' : datum.age_band_of_casualty == 3 ? '11 - 15' : datum.age_band_of_casualty == 4 ? '16 - 20' : datum.age_band_of_casualty == 5 ? '21 - 25' : datum.age_band_of_casualty == 6 ? '26 - 35' : datum.age_band_of_casualty == 7 ? '36 - 45' : datum.age_band_of_casualty == 8 ? '46 - 55' : datum.age_band_of_casualty == 9 ? '56 - 65' : datum.age_band_of_casualty == 10 ? '66 - 75' : datum.age_band_of_casualty == 11 ? 'Trên 75' : 'Không rõ'",
+      "as": "NhomTuoi_VN"
     }
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 2},
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 2
+  },
   "encoding": {
     "y": {
-      "field": "age_band_of_casualty_label",
-      "type": "ordinal",
+      "field": "NhomTuoi_VN",
+      "type": "nominal",
       "title": "Nhóm tuổi",
-      "sort": {"field": "age_order", "order": "descending"}
+      "sort": {
+        "field": "age_band_of_casualty",
+        "order": "descending"
+      }
     },
     "x": {
       "field": "Total Casualties",
       "type": "quantitative",
       "title": "Số người thương vong",
-      "axis": {"format": "~s"}
+      "axis": {
+        "format": "~s"
+      }
     },
     "color": {
       "field": "Mức độ thương vong",
       "type": "nominal",
       "title": "Mức độ thương vong",
       "scale": {
-        "domain": ["Tử vong", "Nghiêm trọng", "Nhẹ"],
-        "range": ["#DC2626", "#F97316", "#60A5FA"]
+        "domain": [
+          "Tử vong",
+          "Nghiêm trọng",
+          "Nhẹ"
+        ],
+        "range": [
+          "#DC2626",
+          "#F97316",
+          "#60A5FA"
+        ]
       },
-      "legend": {"orient": "top", "direction": "horizontal"}
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal"
+      }
     },
     "order": {
       "field": "severity_order",
@@ -105,10 +126,45 @@ Các biểu đồ dưới đây đã được chỉnh để:
       "sort": "ascending"
     },
     "tooltip": [
-      {"field": "age_band_of_casualty_label", "title": "Nhóm tuổi"},
-      {"field": "Mức độ thương vong", "title": "Mức độ"},
-      {"field": "Total Casualties", "title": "Số người thương vong", "format": ","}
-    ]
+      {
+        "field": "age_band_of_casualty_label",
+        "title": "Nhóm tuổi"
+      },
+      {
+        "field": "Mức độ thương vong",
+        "title": "Mức độ"
+      },
+      {
+        "field": "Total Casualties",
+        "title": "Số người thương vong",
+        "format": ","
+      }
+    ],
+    "opacity": {
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
+    }
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
+    }
+  ],
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```
@@ -132,7 +188,9 @@ Các biểu đồ dưới đây đã được chỉnh để:
 
 ```json
 {
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "title": {
     "text": "Số người thương vong theo vai trò tham gia giao thông",
     "anchor": "middle",
@@ -159,28 +217,73 @@ Các biểu đồ dưới đây đã được chỉnh để:
       "field": "Vai trò",
       "type": "nominal",
       "title": "Vai trò tham gia giao thông",
-      "sort": {"field": "Total Casualties", "order": "descending"}
+      "sort": {
+        "field": "Total Casualties",
+        "order": "descending"
+      }
     },
     "x": {
       "field": "Total Casualties",
       "type": "quantitative",
       "title": "Số người thương vong",
-      "axis": {"format": "~s"}
+      "axis": {
+        "format": "~s"
+      }
     },
     "color": {
       "field": "Vai trò",
       "type": "nominal",
       "title": "Vai trò",
       "scale": {
-        "domain": ["Người điều khiển", "Hành khách", "Người đi bộ"],
-        "range": ["#2563EB", "#14B8A6", "#F59E0B"]
+        "domain": [
+          "Người điều khiển",
+          "Hành khách",
+          "Người đi bộ"
+        ],
+        "range": [
+          "#2563EB",
+          "#14B8A6",
+          "#F59E0B"
+        ]
       },
       "legend": null
     },
     "tooltip": [
-      {"field": "Vai trò", "title": "Vai trò"},
-      {"field": "Total Casualties", "title": "Số người thương vong", "format": ","}
-    ]
+      {
+        "field": "Vai trò",
+        "title": "Vai trò"
+      },
+      {
+        "field": "Total Casualties",
+        "title": "Số người thương vong",
+        "format": ","
+      }
+    ],
+    "opacity": {
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
+    }
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
+    }
+  ],
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```
@@ -197,7 +300,7 @@ Các biểu đồ dưới đây đã được chỉnh để:
 
 **BƯỚC 1: KÉO DỮ LIỆU VÀO VALUES**
 
-- `Casualties` > **`age_band_of_casualty_label`**
+- `Casualties` > **`age_band_of_casualty`**
 - `Casualties` > **`sex_of_casualty_label`**
 - `Casualties` > **`Total Casualties`** (Measure)
 
@@ -205,7 +308,9 @@ Các biểu đồ dưới đây đã được chỉnh để:
 
 ```json
 {
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "title": {
     "text": "Số người thương vong theo nhóm tuổi và giới tính",
     "anchor": "middle",
@@ -215,31 +320,41 @@ Các biểu đồ dưới đây đã được chỉnh để:
   },
   "transform": [
     {
-      "filter": "datum.age_band_of_casualty_label != 'Data missing or out of range' && datum.age_band_of_casualty_label != null && datum.sex_of_casualty_label != 'Data missing or out of range' && datum.sex_of_casualty_label != 'unknown (self reported)' && datum.sex_of_casualty_label != null"
+      "filter": "datum.age_band_of_casualty != -1 && datum.age_band_of_casualty != null && datum.sex_of_casualty_label != 'Data missing or out of range' && datum.sex_of_casualty_label != 'unknown (self reported)' && datum.sex_of_casualty_label != null"
     },
     {
       "calculate": "datum.sex_of_casualty_label == 'Male' ? 'Nam' : datum.sex_of_casualty_label == 'Female' ? 'Nữ' : datum.sex_of_casualty_label",
       "as": "Giới tính"
     },
     {
-      "calculate": "datum.age_band_of_casualty_label == '0 - 5' ? 1 : datum.age_band_of_casualty_label == '6 - 10' ? 2 : datum.age_band_of_casualty_label == '11 - 15' ? 3 : datum.age_band_of_casualty_label == '16 - 20' ? 4 : datum.age_band_of_casualty_label == '21 - 25' ? 5 : datum.age_band_of_casualty_label == '26 - 35' ? 6 : datum.age_band_of_casualty_label == '36 - 45' ? 7 : datum.age_band_of_casualty_label == '46 - 55' ? 8 : datum.age_band_of_casualty_label == '56 - 65' ? 9 : datum.age_band_of_casualty_label == '66 - 75' ? 10 : datum.age_band_of_casualty_label == 'Over 75' ? 11 : 99",
-      "as": "age_order"
+      "calculate": "datum.age_band_of_casualty == 1 ? '0 - 5' : datum.age_band_of_casualty == 2 ? '6 - 10' : datum.age_band_of_casualty == 3 ? '11 - 15' : datum.age_band_of_casualty == 4 ? '16 - 20' : datum.age_band_of_casualty == 5 ? '21 - 25' : datum.age_band_of_casualty == 6 ? '26 - 35' : datum.age_band_of_casualty == 7 ? '36 - 45' : datum.age_band_of_casualty == 8 ? '46 - 55' : datum.age_band_of_casualty == 9 ? '56 - 65' : datum.age_band_of_casualty == 10 ? '66 - 75' : datum.age_band_of_casualty == 11 ? 'Trên 75' : 'Không rõ'",
+      "as": "NhomTuoi_VN"
     }
   ],
-  "mark": {"type": "bar", "cornerRadiusEnd": 2},
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 2
+  },
   "encoding": {
     "x": {
-      "field": "age_band_of_casualty_label",
+      "field": "NhomTuoi_VN",
       "type": "ordinal",
       "title": "Nhóm tuổi",
-      "sort": {"field": "age_order", "order": "ascending"},
-      "axis": {"labelAngle": -35}
+      "sort": {
+        "field": "age_band_of_casualty",
+        "order": "ascending"
+      },
+      "axis": {
+        "labelAngle": -35
+      }
     },
     "y": {
       "field": "Total Casualties",
       "type": "quantitative",
       "title": "Số người thương vong",
-      "axis": {"format": "~s"}
+      "axis": {
+        "format": "~s"
+      }
     },
     "xOffset": {
       "field": "Giới tính"
@@ -249,16 +364,60 @@ Các biểu đồ dưới đây đã được chỉnh để:
       "type": "nominal",
       "title": "Giới tính",
       "scale": {
-        "domain": ["Nam", "Nữ"],
-        "range": ["#2563EB", "#EC4899"]
+        "domain": [
+          "Nam",
+          "Nữ"
+        ],
+        "range": [
+          "#2563EB",
+          "#EC4899"
+        ]
       },
-      "legend": {"orient": "top", "direction": "horizontal"}
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal"
+      }
     },
     "tooltip": [
-      {"field": "age_band_of_casualty_label", "title": "Nhóm tuổi"},
-      {"field": "Giới tính", "title": "Giới tính"},
-      {"field": "Total Casualties", "title": "Số người thương vong", "format": ","}
-    ]
+      {
+        "field": "NhomTuoi_VN",
+        "title": "Nhóm tuổi"
+      },
+      {
+        "field": "Giới tính",
+        "title": "Giới tính"
+      },
+      {
+        "field": "Total Casualties",
+        "title": "Số người thương vong",
+        "format": ","
+      }
+    ],
+    "opacity": {
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
+    }
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
+    }
+  ],
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```
@@ -281,7 +440,9 @@ Các biểu đồ dưới đây đã được chỉnh để:
 
 ```json
 {
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "title": {
     "text": "Tỷ lệ mức độ thương vong theo vai trò tham gia giao thông",
     "anchor": "middle",
@@ -303,31 +464,52 @@ Các biểu đồ dưới đây đã được chỉnh để:
       "as": "severity_order"
     }
   ],
-  "mark": {"type": "bar"},
+  "mark": {
+    "type": "bar"
+  },
   "encoding": {
     "x": {
       "field": "Vai trò",
       "type": "nominal",
       "title": "Vai trò tham gia giao thông",
-      "sort": ["Người điều khiển", "Hành khách", "Người đi bộ"],
-      "axis": {"labelAngle": 0}
+      "sort": [
+        "Người điều khiển",
+        "Hành khách",
+        "Người đi bộ"
+      ],
+      "axis": {
+        "labelAngle": 0
+      }
     },
     "y": {
       "field": "Total Casualties",
       "type": "quantitative",
       "stack": "normalize",
       "title": "Tỷ lệ thương vong",
-      "axis": {"format": "%"}
+      "axis": {
+        "format": "%"
+      }
     },
     "color": {
       "field": "Mức độ thương vong",
       "type": "nominal",
       "title": "Mức độ thương vong",
       "scale": {
-        "domain": ["Tử vong", "Nghiêm trọng", "Nhẹ"],
-        "range": ["#991B1B", "#FBBF24", "#2DD4BF"]
+        "domain": [
+          "Tử vong",
+          "Nghiêm trọng",
+          "Nhẹ"
+        ],
+        "range": [
+          "#991B1B",
+          "#FBBF24",
+          "#2DD4BF"
+        ]
       },
-      "legend": {"orient": "top", "direction": "horizontal"}
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal"
+      }
     },
     "order": {
       "field": "severity_order",
@@ -335,10 +517,45 @@ Các biểu đồ dưới đây đã được chỉnh để:
       "sort": "ascending"
     },
     "tooltip": [
-      {"field": "Vai trò", "title": "Vai trò"},
-      {"field": "Mức độ thương vong", "title": "Mức độ"},
-      {"field": "Total Casualties", "title": "Số người thương vong", "format": ","}
-    ]
+      {
+        "field": "Vai trò",
+        "title": "Vai trò"
+      },
+      {
+        "field": "Mức độ thương vong",
+        "title": "Mức độ"
+      },
+      {
+        "field": "Total Casualties",
+        "title": "Số người thương vong",
+        "format": ","
+      }
+    ],
+    "opacity": {
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
+    }
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "pointerover"
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
+    }
+  ],
+  "config": {
+    "font": "Segoe UI"
   }
 }
 ```

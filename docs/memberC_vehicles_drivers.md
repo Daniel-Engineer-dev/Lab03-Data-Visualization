@@ -18,8 +18,10 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
 ```json
 {
   "config": {
-    "font": "system-ui, -apple-system, sans-serif",
-    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
     "axis": {
       "domainColor": "#E5E7EB",
       "tickColor": "#E5E7EB",
@@ -38,14 +40,26 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
     "color": "#111827",
     "offset": 20
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "filter": "datum.vehicle_type_label != 'Data missing or out of range' && datum.vehicle_type_label != 'Unknown'"
     },
     {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "Total Vehicles", "order": "descending"}]
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Total Vehicles",
+          "order": "descending"
+        }
+      ]
     },
     {
       "filter": "datum.rank <= 10"
@@ -57,13 +71,20 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
       "type": "nominal",
       "title": null,
       "sort": "-x",
-      "axis": {"labelLimit": 150}
+      "axis": {
+        "labelLimit": 150
+      }
     },
     "x": {
       "field": "Total Vehicles",
       "type": "quantitative",
       "title": null,
-      "axis": {"grid": false, "labels": false, "ticks": false, "domain": false}
+      "axis": {
+        "grid": false,
+        "labels": false,
+        "ticks": false,
+        "domain": false
+      }
     }
   },
   "layer": [
@@ -71,7 +92,16 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
       "params": [
         {
           "name": "hover",
-          "select": {"type": "point", "on": "pointerover"}
+          "select": {
+            "type": "point",
+            "on": "pointerover"
+          }
+        },
+        {
+          "name": "click",
+          "select": {
+            "type": "point"
+          }
         }
       ],
       "mark": {
@@ -80,16 +110,29 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
       },
       "encoding": {
         "color": {
-          "condition": {"test": "datum.rank == 1", "value": "#10B981"},
+          "condition": {
+            "test": "datum.rank == 1",
+            "value": "#10B981"
+          },
           "value": "#D1FAE5"
         },
         "opacity": {
-          "condition": {"param": "hover", "value": 1},
-          "value": 0.7
+          "condition": {
+            "param": "click",
+            "value": 1
+          },
+          "value": 0.3
         },
         "tooltip": [
-          {"field": "vehicle_type_label", "title": "Loại xe"},
-          {"field": "Total Vehicles", "title": "Số lượng", "format": ","}
+          {
+            "field": "vehicle_type_label",
+            "title": "Loại xe"
+          },
+          {
+            "field": "Total Vehicles",
+            "title": "Số lượng",
+            "format": ","
+          }
         ]
       }
     },
@@ -128,8 +171,10 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
 ```json
 {
   "config": {
-    "font": "system-ui, -apple-system, sans-serif",
-    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
     "axis": {
       "domainColor": "#E5E7EB",
       "tickColor": "#E5E7EB",
@@ -139,7 +184,11 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
       "titleFontWeight": 600,
       "titlePadding": 12
     },
-    "legend": {"titleColor": "#4B5563", "labelColor": "#6B7280", "orient": "top-right"}
+    "legend": {
+      "titleColor": "#4B5563",
+      "labelColor": "#6B7280",
+      "orient": "top-right"
+    }
   },
   "title": {
     "text": "Phương tiện theo nhóm tuổi và giới tính",
@@ -149,7 +198,9 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
     "color": "#111827",
     "offset": 20
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "filter": "datum.age_band_of_driver_label != 'Data missing or out of range' && datum.age_band_of_driver_label != 'Unknown'"
@@ -162,21 +213,54 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
   "params": [
     {
       "name": "hover",
-      "select": {"type": "point", "on": "pointerover", "fields": ["GioiTinh_VN"]}
+      "select": {
+        "type": "point",
+        "on": "pointerover",
+        "fields": [
+          "GioiTinh_VN"
+        ]
+      }
+    },
+    {
+      "name": "click",
+      "select": {
+        "type": "point"
+      }
     }
   ],
-  "mark": {"type": "bar", "cornerRadiusTopLeft": 6, "cornerRadiusTopRight": 6},
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 6,
+    "cornerRadiusTopRight": 6
+  },
   "encoding": {
     "opacity": {
-      "condition": {"param": "hover", "value": 1},
-      "value": 0.7
+      "condition": {
+        "param": "click",
+        "value": 1
+      },
+      "value": 0.3
     },
     "x": {
       "field": "age_band_of_driver_label",
       "type": "ordinal",
       "title": "Nhóm tuổi người lái",
-      "sort": ["0 - 5", "6 - 10", "11 - 15", "16 - 20", "21 - 25", "26 - 35", "36 - 45", "46 - 55", "56 - 65", "66 - 75", "Over 75"],
-      "axis": {"labelAngle": -45}
+      "sort": [
+        "0 - 5",
+        "6 - 10",
+        "11 - 15",
+        "16 - 20",
+        "21 - 25",
+        "26 - 35",
+        "36 - 45",
+        "46 - 55",
+        "56 - 65",
+        "66 - 75",
+        "Over 75"
+      ],
+      "axis": {
+        "labelAngle": -45
+      }
     },
     "y": {
       "field": "Total Vehicles",
@@ -188,14 +272,32 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
       "type": "nominal",
       "title": "Giới tính",
       "scale": {
-        "domain": ["Nam", "Nữ", "Không xác định"],
-        "range": ["#2563EB", "#EC4899", "#E5E7EB"]
+        "domain": [
+          "Nam",
+          "Nữ",
+          "Không xác định"
+        ],
+        "range": [
+          "#2563EB",
+          "#EC4899",
+          "#E5E7EB"
+        ]
       }
     },
     "tooltip": [
-      {"field": "age_band_of_driver_label", "title": "Nhóm tuổi"},
-      {"field": "GioiTinh_VN", "title": "Giới tính"},
-      {"field": "Total Vehicles", "title": "Số lượng", "format": ","}
+      {
+        "field": "age_band_of_driver_label",
+        "title": "Nhóm tuổi"
+      },
+      {
+        "field": "GioiTinh_VN",
+        "title": "Giới tính"
+      },
+      {
+        "field": "Total Vehicles",
+        "title": "Số lượng",
+        "format": ","
+      }
     ]
   }
 }
@@ -214,9 +316,15 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
 ```json
 {
   "config": {
-    "font": "system-ui, -apple-system, sans-serif",
-    "view": {"stroke": "transparent"},
-    "legend": {"titleColor": "#4B5563", "labelColor": "#6B7280", "orient": "top-right"}
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
+    "legend": {
+      "titleColor": "#4B5563",
+      "labelColor": "#6B7280",
+      "orient": "top-right"
+    }
   },
   "title": {
     "text": "Tỷ lệ phương tiện tham gia va chạm theo khu vực",
@@ -226,7 +334,9 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
     "color": "#111827",
     "offset": 20
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "filter": "datum.urban_or_rural_area_label != 'Unallocated' && datum.urban_or_rural_area_label != 'Unknown' && isValid(datum['Total Vehicles']) && datum['Total Vehicles'] > 0"
@@ -236,7 +346,13 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
       "as": "KhuVuc_VN"
     },
     {
-      "joinaggregate": [{"op": "sum", "field": "Total Vehicles", "as": "GrandTotal"}]
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "Total Vehicles",
+          "as": "GrandTotal"
+        }
+      ]
     },
     {
       "calculate": "datum['Total Vehicles'] / datum.GrandTotal",
@@ -244,47 +360,106 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
     }
   ],
   "encoding": {
-    "theta": {"field": "Total Vehicles", "type": "quantitative"},
+    "theta": {
+      "field": "Total Vehicles",
+      "type": "quantitative"
+    },
     "color": {
       "field": "KhuVuc_VN",
       "type": "nominal",
       "title": "Khu vực",
       "scale": {
-        "domain": ["Thành thị", "Nông thôn"],
-        "range": ["#6366F1", "#F59E0B"]
+        "domain": [
+          "Thành thị",
+          "Nông thôn"
+        ],
+        "range": [
+          "#6366F1",
+          "#F59E0B"
+        ]
       }
     }
   },
   "layer": [
     {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 100,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "opacity": {
+          "condition": {
+            "param": "click",
+            "value": 1
+          },
+          "value": 0.3
+        },
+        "tooltip": [
+          {
+            "field": "KhuVuc_VN",
+            "title": "Khu vực"
+          },
+          {
+            "field": "Total Vehicles",
+            "title": "Số lượng",
+            "format": ","
+          },
+          {
+            "field": "Percent",
+            "title": "Tỷ lệ",
+            "format": ".1%"
+          }
+        ]
+      },
       "params": [
         {
           "name": "hover",
-          "select": {"type": "point", "on": "pointerover"}
-        }
-      ],
-      "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 100, "stroke": "#FFFFFF", "strokeWidth": 2},
-      "encoding": {
-        "opacity": {
-          "condition": {"param": "hover", "value": 1},
-          "value": 0.8
+          "select": {
+            "type": "point",
+            "on": "pointerover"
+          }
         },
-        "tooltip": [
-          {"field": "KhuVuc_VN", "title": "Khu vực"},
-          {"field": "Total Vehicles", "title": "Số lượng", "format": ","},
-          {"field": "Percent", "title": "Tỷ lệ", "format": ".1%"}
-        ]
-      }
+        {
+          "name": "click",
+          "select": {
+            "type": "point"
+          }
+        }
+      ]
     },
     {
-      "mark": {"type": "text", "fontWeight": 700, "fontSize": 14, "radius": 75},
+      "mark": {
+        "type": "text",
+        "fontWeight": 700,
+        "fontSize": 14,
+        "radius": 75
+      },
       "encoding": {
-        "theta": {"field": "Total Vehicles", "type": "quantitative", "stack": true},
-        "detail": {"field": "KhuVuc_VN", "type": "nominal"},
-        "text": {"field": "Percent", "type": "quantitative", "format": ".1%"},
-        "color": {"value": "#1F2937"},
+        "theta": {
+          "field": "Total Vehicles",
+          "type": "quantitative",
+          "stack": true
+        },
+        "detail": {
+          "field": "KhuVuc_VN",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "Percent",
+          "type": "quantitative",
+          "format": ".1%"
+        },
+        "color": {
+          "value": "#1F2937"
+        },
         "opacity": {
-          "condition": {"test": "datum.Percent > 0.001", "value": 1},
+          "condition": {
+            "test": "datum.Percent > 0.001",
+            "value": 1
+          },
           "value": 0
         }
       }
@@ -307,8 +482,10 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
 ```json
 {
   "config": {
-    "font": "system-ui, -apple-system, sans-serif",
-    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
     "axis": {
       "domainColor": "#E5E7EB",
       "tickColor": "#E5E7EB",
@@ -327,33 +504,55 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
     "color": "#111827",
     "offset": 20
   },
-  "data": {"name": "dataset"},
+  "data": {
+    "name": "dataset"
+  },
   "transform": [
     {
       "filter": "datum.age_band_of_driver_label != 'Data missing or out of range' && datum.age_band_of_driver_label != 'Unknown'"
     }
   ],
-  "resolve": {"scale": {"y": "independent"}},
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
   "layer": [
     {
-      "params": [
-        {
-          "name": "hover",
-          "select": {"type": "point", "on": "pointerover"}
-        }
-      ],
-      "mark": {"type": "bar", "color": "#DBEAFE", "cornerRadiusTopLeft": 6, "cornerRadiusTopRight": 6},
+      "mark": {
+        "type": "bar",
+        "color": "#DBEAFE",
+        "cornerRadiusTopLeft": 6,
+        "cornerRadiusTopRight": 6
+      },
       "encoding": {
         "opacity": {
-          "condition": {"param": "hover", "value": 1},
-          "value": 0.7
+          "condition": {
+            "param": "click",
+            "value": 1
+          },
+          "value": 0.3
         },
         "x": {
           "field": "age_band_of_driver_label",
           "type": "ordinal",
           "title": "Nhóm tuổi",
-          "sort": ["0 - 5", "6 - 10", "11 - 15", "16 - 20", "21 - 25", "26 - 35", "36 - 45", "46 - 55", "56 - 65", "66 - 75", "Over 75"],
-          "axis": {"labelAngle": -45}
+          "sort": [
+            "0 - 5",
+            "6 - 10",
+            "11 - 15",
+            "16 - 20",
+            "21 - 25",
+            "26 - 35",
+            "36 - 45",
+            "46 - 55",
+            "56 - 65",
+            "66 - 75",
+            "Over 75"
+          ],
+          "axis": {
+            "labelAngle": -45
+          }
         },
         "y": {
           "field": "Total Vehicles",
@@ -361,18 +560,64 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
           "title": "Số lượng phương tiện"
         },
         "tooltip": [
-          {"field": "age_band_of_driver_label", "title": "Nhóm tuổi"},
-          {"field": "Total Vehicles", "title": "Tổng phương tiện", "format": ","}
+          {
+            "field": "age_band_of_driver_label",
+            "title": "Nhóm tuổi"
+          },
+          {
+            "field": "Total Vehicles",
+            "title": "Tổng phương tiện",
+            "format": ","
+          }
         ]
-      }
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "on": "pointerover"
+          }
+        },
+        {
+          "name": "click",
+          "select": {
+            "type": "point"
+          }
+        }
+      ]
     },
     {
-      "mark": {"type": "line", "color": "#9333EA", "strokeWidth": 3, "interpolate": "monotone", "point": {"filled": true, "fill": "#FFFFFF", "stroke": "#9333EA", "strokeWidth": 2, "size": 60}},
+      "mark": {
+        "type": "line",
+        "color": "#9333EA",
+        "strokeWidth": 3,
+        "interpolate": "monotone",
+        "point": {
+          "filled": true,
+          "fill": "#FFFFFF",
+          "stroke": "#9333EA",
+          "strokeWidth": 2,
+          "size": 60
+        }
+      },
       "encoding": {
         "x": {
           "field": "age_band_of_driver_label",
           "type": "ordinal",
-          "sort": ["0 - 5", "6 - 10", "11 - 15", "16 - 20", "21 - 25", "26 - 35", "36 - 45", "46 - 55", "56 - 65", "66 - 75", "Over 75"]
+          "sort": [
+            "0 - 5",
+            "6 - 10",
+            "11 - 15",
+            "16 - 20",
+            "21 - 25",
+            "26 - 35",
+            "36 - 45",
+            "46 - 55",
+            "56 - 65",
+            "66 - 75",
+            "Over 75"
+          ]
         },
         "y": {
           "field": "Serious Casualties",
@@ -380,9 +625,23 @@ Màu sắc chủ đạo: **Amber (`#FBBF24`)**
           "title": "Số ca thương vong nặng (Serious)"
         },
         "tooltip": [
-          {"field": "age_band_of_driver_label", "title": "Nhóm tuổi"},
-          {"field": "Serious Casualties", "title": "Thương vong nặng", "format": ","}
-        ]
+          {
+            "field": "age_band_of_driver_label",
+            "title": "Nhóm tuổi"
+          },
+          {
+            "field": "Serious Casualties",
+            "title": "Thương vong nặng",
+            "format": ","
+          }
+        ],
+        "opacity": {
+          "condition": {
+            "param": "click",
+            "value": 1
+          },
+          "value": 0.3
+        }
       }
     }
   ]
