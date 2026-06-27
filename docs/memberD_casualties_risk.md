@@ -127,7 +127,7 @@ Các biểu đồ dưới đây đã được chỉnh để:
     },
     "tooltip": [
       {
-        "field": "age_band_of_casualty_label",
+        "field": "NhomTuoi_VN",
         "title": "Nhóm tuổi"
       },
       {
