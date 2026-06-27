@@ -1,1 +1,6 @@
-https://drive.google.com/drive/folders/1nHXy3pHXzv50jblpyR1beulpuRSs6aUt?usp=drive_link
+Link chứa các file dữ liệu thô của dự án:
+https://drive.google.com/drive/folders/1nHXy3pHXzv50jblpyR1beulpuRSs6aUt?usp=sharing
+Link chứa file .pbix dữ liệu tiền xử lý dùng chung cho cả nhóm:
+https://drive.google.com/drive/folders/1sywfP6Y0LKDpIVAWVs_C1WCiwlf-ybZ6?usp=drive_link
+Link dẫn đế dữ liệu mẫu minh họa các chức năng power bi:
+https://drive.google.com/drive/folders/15G17ukMnO5SE3tEGr7q1lfL1cEJYrSk0?usp=drive_link

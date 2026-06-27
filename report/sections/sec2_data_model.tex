@@ -114,6 +114,8 @@ Các mối quan hệ chính được thiết lập trong Power BI bao gồm:
 
 Toàn bộ công việc làm sạch và tiền xử lý dữ liệu được thực hiện trực tiếp trong Power Query để đảm bảo tính tái lập và nhất quán. Các bước thực hiện cụ thể bao gồm:
 
+File Power BI nền chứa dữ liệu sạch, Data Model và các measure dùng chung cho cả nhóm được lưu tại \href{https://drive.google.com/drive/folders/1sywfP6Y0LKDpIVAWVs_C1WCiwlf-ybZ6?usp=drive_link}{Google Drive (group15\_base\_model.pbix)} để các thành viên sử dụng thống nhất trong quá trình xây dựng biểu đồ cá nhân.
+
 \begin{enumerate}
     \item \textbf{Chuẩn hóa kiểu dữ liệu}: Đưa trường ngày tháng (\texttt{date}) về định dạng \texttt{Date}, các cột ID và mã phân loại về kiểu \texttt{Text} hoặc \texttt{Whole Number}, các cột chứa thông số kỹ thuật (như giới hạn tốc độ \texttt{speed\_limit}, tuổi \texttt{age}) về kiểu số nguyên hoặc số thập phân phù hợp.
     \textbf{Xử lý giá trị âm và dữ liệu thiếu (Cleaned columns)}: Một số trường số như tuổi (\texttt{age\_of\_driver}, \texttt{age\_of\_casualty}) chứa giá trị \texttt{-1} đại diện cho dữ liệu bị thiếu hoặc nằm ngoài khoảng hợp lệ. Nhóm đã tạo các cột mới \texttt{age\_of\_driver\_clean} và \texttt{age\_of\_casualty\_clean} bằng cách thay thế các giá trị âm này bằng \texttt{null}. Việc này giúp tính toán các giá trị trung bình (\texttt{Average}) và trung vị (\texttt{Median}) về tuổi được chính xác.
